@@ -1,0 +1,3180 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+    <title> physiology QBank 
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        :root {
+            --bg1: #0a0f1f;
+            --bg2: #1a2639;
+            --bg3: #2d3a4f;
+            --primary: #4fc3f7;
+            --primary-dark: #0288d1;
+            --accent: #ffd54f;
+            --danger: #ef5350;
+            --success: #66bb6a;
+            --card: #ffffff;
+            --text: #e2e8f0;
+            --muted: #a0aec0;
+            --radius: 16px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            --glow: 0 0 25px rgba(79, 195, 247, 0.12);
+            --max-width: 600px;
+            --bg-card: rgba(255, 255, 255, 0.06);
+            --border-card: rgba(255, 255, 255, 0.06);
+        }
+        body.light {
+            --bg1: #ffffff;
+            --bg2: #ffffff;
+            --bg3: #ffffff;
+            --bg-card: #ffffff;
+            --border-card: #cccccc;
+            --text: #000000;
+            --muted: #555555;
+            --primary: #1565c0;
+            --primary-dark: #0d47a1;
+            --accent: #f9a825;
+            --danger: #c62828;
+            --success: #2e7d32;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --glow: none;
+            background: #ffffff !important;
+            background-image: none !important;
+            animation: none !important;
+        }
+        body {
+            font-family: "Tahoma", "Segoe UI", "Cairo", sans-serif;
+            background: linear-gradient(-45deg, var(--bg1), var(--bg2), var(--bg3), #0f1a2b);
+            background-size: 400% 400%;
+            animation: gradientBG 18s ease infinite;
+            min-height: 100vh;
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px 10px;
+            position: relative;
+            overflow-x: hidden;
+            transition: background 0.4s, color 0.3s;
+        }
+        body.light::before,
+        body.light::after {
+            display: none;
+        }
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        body::before,
+        body::after {
+            content: '';
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(79, 195, 247, 0.06) 0%, transparent 70%);
+            animation: floatBubble 20s infinite alternate ease-in-out;
+            pointer-events: none;
+            z-index: 0;
+        }
+        body::before {
+            top: 5%;
+            left: -5%;
+        }
+        body::after {
+            bottom: 5%;
+            right: -5%;
+            animation-delay: 4s;
+        }
+        @keyframes floatBubble {
+            0% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+            }
+            100% {
+                transform: translate(30px, -30px) scale(1.15) rotate(8deg);
+            }
+        }
+        .app {
+            width: 100%;
+            max-width: var(--max-width);
+            position: relative;
+            z-index: 1;
+        }
+        .top-header {
+            text-align: center;
+            padding: 8px 0 4px;
+            animation: fadeInDown 0.6s ease;
+        }
+        .top-header h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-shadow: 0 4px 15px rgba(79, 195, 247, 0.25);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        body.light .top-header h1 {
+            background: none;
+            -webkit-background-clip: unset;
+            -webkit-text-fill-color: unset;
+            color: #000;
+            text-shadow: none;
+        }
+        body.light .top-header .sub {
+            color: #333;
+        }
+        body.light .top-header .creator .name {
+            color: #000;
+        }
+        .top-header .sub {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+        .top-header .creator {
+            font-size: 0.7rem;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+        .top-header .creator i {
+            color: var(--danger);
+        }
+        .top-header .creator .name {
+            color: var(--text);
+            font-weight: 700;
+        }
+        .theme-toggle-wrap {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 6px;
+        }
+        .theme-toggle {
+            display: flex;
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 30px;
+            padding: 3px;
+            gap: 2px;
+            box-shadow: var(--shadow);
+        }
+        .theme-toggle button {
+            background: transparent;
+            border: none;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--muted);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .theme-toggle button.active {
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+            box-shadow: 0 2px 12px rgba(79, 195, 247, 0.25);
+        }
+        body.light .theme-toggle button.active {
+            background: #1565c0;
+            color: #fff;
+            box-shadow: none;
+        }
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow), var(--glow);
+            padding: 16px 14px;
+            margin-bottom: 14px;
+            transition: transform 0.2s ease, background 0.3s, border 0.3s;
+            animation: fadeInUp 0.5s ease both;
+            color: var(--text);
+        }
+        body.light .card {
+            background: #ffffff;
+            border: 1px solid #cccccc;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .card-title {
+            margin: 0 0 12px;
+            font-size: 1rem;
+            color: var(--text);
+            border-inline-start: 3px solid var(--primary);
+            padding-inline-start: 10px;
+            font-weight: 600;
+        }
+        body.light .card-title {
+            border-color: #1565c0;
+        }
+        .card-title i {
+            color: var(--accent);
+            margin-left: 6px;
+        }
+        body.light .card-title i {
+            color: #f9a825;
+        }
+        .action-icons {
+            display: flex;
+            justify-content: space-around;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .action-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            cursor: pointer;
+            padding: 6px 14px;
+            border-radius: 12px;
+            transition: 0.25s;
+            border: 1.5px solid transparent;
+            background: transparent;
+            color: var(--muted);
+            font-size: 0.7rem;
+            font-weight: 600;
+            min-width: 56px;
+        }
+        .action-icon .icon {
+            font-size: 1.5rem;
+            line-height: 1;
+            transition: 0.25s;
+        }
+        .action-icon .label {
+            font-size: 0.55rem;
+            color: var(--muted);
+        }
+        .action-icon.active {
+            border-color: var(--primary);
+            background: rgba(79, 195, 247, 0.08);
+            box-shadow: 0 0 20px rgba(79, 195, 247, 0.12);
+        }
+        body.light .action-icon.active {
+            border-color: #1565c0;
+            background: #e3f2fd;
+            box-shadow: none;
+        }
+        .action-icon:hover {
+            background: rgba(255, 255, 255, 0.04);
+        }
+        body.light .action-icon:hover {
+            background: #f5f5f5;
+        }
+        .sub-options {
+            display: none;
+            padding: 8px 10px;
+            margin-top: 6px;
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+            border: 1px solid var(--border-card);
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+            transition: 0.3s;
+        }
+        body.light .sub-options {
+            background: #f5f5f5;
+            border-color: #cccccc;
+        }
+        .sub-options.show {
+            display: flex;
+        }
+        .sub-options .action-btn {
+            border: 1px solid var(--border-card);
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 5px 16px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+        }
+        body.light .sub-options .action-btn {
+            background: #ffffff;
+            border-color: #cccccc;
+            color: #333333;
+        }
+        .sub-options .action-btn:hover {
+            border-color: var(--primary);
+            background: rgba(79, 195, 247, 0.06);
+            transform: translateY(-1px);
+        }
+        body.light .sub-options .action-btn:hover {
+            border-color: #1565c0;
+            background: #e3f2fd;
+        }
+        .sub-options .action-btn.active {
+            border-color: var(--primary);
+            background: rgba(79, 195, 247, 0.12);
+            color: var(--text);
+            box-shadow: 0 0 16px rgba(79, 195, 247, 0.08);
+        }
+        body.light .sub-options .action-btn.active {
+            border-color: #1565c0;
+            background: #bbdefb;
+            color: #000;
+            box-shadow: none;
+        }
+        .section-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            max-height: 280px;
+            overflow-y: auto;
+            padding-inline-end: 2px;
+        }
+        .section-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid var(--border-card);
+            border-radius: 10px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            font-size: 0.85rem;
+            color: var(--text);
+        }
+        body.light .section-item {
+            border-color: #cccccc;
+        }
+        .section-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(79, 195, 247, 0.2);
+        }
+        body.light .section-item:hover {
+            background: #f5f5f5;
+            border-color: #1565c0;
+        }
+        .section-item.active {
+            border-color: var(--primary);
+            background: rgba(79, 195, 247, 0.08);
+        }
+        body.light .section-item.active {
+            border-color: #1565c0;
+            background: #e3f2fd;
+        }
+        .section-item .cnt {
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 30px;
+            padding: 0 10px;
+            font-size: 0.7rem;
+            color: var(--muted);
+            font-weight: 700;
+            min-width: 30px;
+            text-align: center;
+        }
+        body.light .section-item .cnt {
+            background: #dddddd;
+            color: #333;
+        }
+        .section-item.active .cnt {
+            background: var(--primary);
+            color: #fff;
+        }
+        body.light .section-item.active .cnt {
+            background: #1565c0;
+            color: #fff;
+        }
+        .section-item .info-btn {
+            background: none;
+            border: none;
+            color: var(--muted);
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 0 4px;
+            transition: color 0.2s;
+        }
+        .section-item .info-btn:hover {
+            color: var(--primary);
+        }
+        body.light .section-item .info-btn:hover {
+            color: #1565c0;
+        }
+        #section-explanation {
+            margin-top: 12px;
+            padding: 16px;
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-card);
+            display: none;
+            animation: fadeInUp 0.3s ease;
+        }
+        body.light #section-explanation {
+            background: #f5f5f5;
+            border-color: #cccccc;
+        }
+        #section-explanation.show {
+            display: block;
+        }
+        .explain-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .explain-header h3 {
+            color: var(--text);
+            font-size: 1rem;
+            margin: 0;
+        }
+        .explain-controls {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+        .explain-controls .lang-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-card);
+            color: var(--muted);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+        }
+        body.light .explain-controls .lang-btn {
+            background: #ffffff;
+            border-color: #cccccc;
+            color: #333;
+        }
+        .explain-controls .lang-btn.active {
+            border-color: var(--primary);
+            background: rgba(79, 195, 247, 0.12);
+            color: var(--text);
+        }
+        body.light .explain-controls .lang-btn.active {
+            border-color: #1565c0;
+            background: #bbdefb;
+            color: #000;
+        }
+        .explain-controls .lang-btn:hover {
+            color: var(--text);
+        }
+        body.light .explain-controls .lang-btn:hover {
+            color: #000;
+        }
+        .explain-controls .close-explain {
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0 4px;
+        }
+        .explain-controls .close-explain:hover {
+            color: var(--danger);
+        }
+        body.light .explain-controls .close-explain:hover {
+            color: #c62828;
+        }
+        #explain-text {
+            font-size: 0.9rem;
+            line-height: 2;
+            color: var(--text);
+            background: rgba(0, 0, 0, 0.1);
+            padding: 12px;
+            border-radius: 10px;
+            min-height: 60px;
+            direction: ltr;
+            text-align: left;
+            white-space: pre-wrap;
+        }
+        body.light #explain-text {
+            background: #ffffff;
+            color: #000;
+            border: 1px solid #cccccc;
+        }
+        #explain-text.ar {
+            direction: rtl;
+            text-align: right;
+            font-family: "Cairo", "Tahoma", sans-serif;
+        }
+        #explain-text.en {
+            direction: ltr;
+            text-align: left;
+        }
+        .big-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(79, 195, 247, 0.25);
+            transition: all 0.15s ease;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.3px;
+        }
+        body.light .big-btn {
+            background: #1565c0;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(21, 101, 192, 0.3);
+        }
+        .big-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 28px rgba(79, 195, 247, 0.35);
+        }
+        body.light .big-btn:hover {
+            box-shadow: 0 4px 12px rgba(21, 101, 192, 0.35);
+        }
+        .big-btn:active {
+            transform: scale(0.97);
+        }
+        .big-btn.secondary {
+            background: linear-gradient(135deg, #4a5568, #2d3748);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        body.light .big-btn.secondary {
+            background: #757575;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .big-btn.warn {
+            background: linear-gradient(135deg, var(--accent), #f57f17);
+            box-shadow: 0 6px 20px rgba(255, 213, 79, 0.25);
+        }
+        body.light .big-btn.warn {
+            background: #f9a825;
+            color: #000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .big-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        .stats-row {
+            display: flex;
+            justify-content: space-around;
+            gap: 8px;
+            text-align: center;
+            margin: 6px 0;
+        }
+        .stats-row .stat .num {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), #81d4fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        body.light .stats-row .stat .num {
+            background: none;
+            -webkit-background-clip: unset;
+            -webkit-text-fill-color: unset;
+            color: #000;
+        }
+        .stats-row .stat .lbl {
+            font-size: 0.7rem;
+            color: var(--muted);
+        }
+        .progress-stats {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .progress-ring {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            flex-shrink: 0;
+        }
+        .progress-ring svg {
+            transform: rotate(-90deg);
+            width: 70px;
+            height: 70px;
+        }
+        .progress-ring .bg {
+            fill: none;
+            stroke: var(--border-card);
+            stroke-width: 6;
+        }
+        body.light .progress-ring .bg {
+            stroke: #cccccc;
+        }
+        .progress-ring .fg {
+            fill: none;
+            stroke: var(--primary);
+            stroke-width: 6;
+            stroke-linecap: round;
+            stroke-dasharray: 176;
+            stroke-dashoffset: 176;
+            transition: stroke-dashoffset 0.6s ease;
+        }
+        body.light .progress-ring .fg {
+            stroke: #1565c0;
+        }
+        .progress-ring .center-text {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+        .progress-ring .center-text small {
+            font-size: 0.5rem;
+            font-weight: 400;
+            color: var(--muted);
+            margin-right: 1px;
+        }
+        .weak-link {
+            margin-top: 10px;
+            font-size: 0.75rem;
+            color: var(--muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .weak-link i {
+            color: var(--accent);
+        }
+        body.light .weak-link i {
+            color: #f9a825;
+        }
+        .weak-link:hover {
+            color: var(--text);
+        }
+        body.light .weak-link:hover {
+            color: #000;
+        }
+        .action-row-bottom {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .action-row-bottom .big-btn {
+            flex: 1;
+            font-size: 0.75rem;
+            padding: 8px;
+            margin-top: 0;
+        }
+        #screen-quiz,
+        #screen-results {
+            display: none;
+        }
+        #screen-quiz.active,
+        #screen-results.active {
+            display: block;
+        }
+        .quiz-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+        #timer-badge {
+            font-weight: 600;
+            font-size: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px 12px;
+            border-radius: 30px;
+            border: 1px solid var(--border-card);
+        }
+        body.light #timer-badge {
+            background: #f0f0f0;
+            border-color: #cccccc;
+        }
+        #timer-badge.warn {
+            background: rgba(255, 213, 79, 0.15);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        body.light #timer-badge.warn {
+            background: #f5f5f5;
+            border-color: #f9a825;
+            color: #f9a825;
+        }
+        #timer-badge.danger {
+            background: rgba(239, 83, 80, 0.2);
+            border-color: var(--danger);
+            color: var(--danger);
+            animation: pulse 0.7s infinite alternate;
+        }
+        body.light #timer-badge.danger {
+            background: #f5f5f5;
+            border-color: #c62828;
+            color: #c62828;
+        }
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0.5;
+            }
+        }
+        .progress-wrap {
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 30px;
+            height: 4px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+        body.light .progress-wrap {
+            background: #dddddd;
+        }
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        body.light .progress-bar {
+            background: linear-gradient(90deg, #1565c0, #f9a825);
+        }
+        .q-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+        .q-tag {
+            display: inline-block;
+            background: rgba(79, 195, 247, 0.10);
+            color: var(--primary);
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 2px 12px;
+            border-radius: 30px;
+            border: 1px solid rgba(79, 195, 247, 0.06);
+            margin-bottom: 8px;
+        }
+        body.light .q-tag {
+            background: #e3f2fd;
+            color: #1565c0;
+            border-color: #bbdefb;
+        }
+        .q-en {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 4px;
+            line-height: 1.6;
+            direction: ltr;
+            text-align: left;
+            display: block;
+            word-wrap: break-word;
+        }
+        .q-ar {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 14px;
+            line-height: 1.7;
+            direction: rtl;
+            text-align: right;
+            display: block;
+            word-wrap: break-word;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--border-card);
+            border-radius: 12px;
+            padding: 10px 14px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            background: rgba(255, 255, 255, 0.02);
+            position: relative;
+            direction: ltr;
+        }
+        body.light .option {
+            background: #ffffff;
+            border-color: #cccccc;
+        }
+        .option:hover {
+            border-color: rgba(79, 195, 247, 0.25);
+            background: rgba(255, 255, 255, 0.04);
+        }
+        body.light .option:hover {
+            border-color: #1565c0;
+            background: #f5f5f5;
+        }
+        .option .opt-en {
+            font-weight: 600;
+            color: var(--text);
+            font-size: 0.9rem;
+            flex: 1;
+            direction: ltr;
+            text-align: left;
+        }
+        .option .opt-ar {
+            color: var(--muted);
+            font-size: 0.8rem;
+            direction: rtl;
+            text-align: right;
+            flex: 1;
+        }
+        .option .mark {
+            font-size: 1.1rem;
+            width: 24px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .option.selected {
+            border-color: var(--primary);
+            background: rgba(79, 195, 247, 0.06);
+        }
+        body.light .option.selected {
+            border-color: #1565c0;
+            background: #e3f2fd;
+        }
+        .option.correct {
+            border-color: var(--success);
+            background: rgba(102, 187, 106, 0.08);
+        }
+        body.light .option.correct {
+            border-color: #2e7d32;
+            background: #e8f5e9;
+        }
+        .option.wrong {
+            border-color: var(--danger);
+            background: rgba(239, 83, 80, 0.08);
+        }
+        body.light .option.wrong {
+            border-color: #c62828;
+            background: #ffebee;
+        }
+        .option.disabled {
+            cursor: default;
+            opacity: 0.8;
+        }
+        .feedback-box {
+            margin-top: 12px;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            animation: fadeInUp 0.25s ease;
+        }
+        .feedback-box.correct {
+            background: rgba(102, 187, 106, 0.08);
+            border: 1px solid rgba(102, 187, 106, 0.15);
+            color: #a7f3d0;
+        }
+        body.light .feedback-box.correct {
+            background: #e8f5e9;
+            border-color: #2e7d32;
+            color: #000;
+        }
+        .feedback-box.wrong {
+            background: rgba(239, 83, 80, 0.08);
+            border: 1px solid rgba(239, 83, 80, 0.15);
+            color: #fecaca;
+        }
+        body.light .feedback-box.wrong {
+            background: #ffebee;
+            border-color: #c62828;
+            color: #000;
+        }
+        .feedback-box .fb-title {
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .feedback-box .fb-explain {
+            color: var(--muted);
+        }
+        body.light .feedback-box .fb-explain {
+            color: #555;
+        }
+        .nav-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .nav-row .big-btn {
+            flex: 1;
+            margin-top: 0;
+            font-size: 0.85rem;
+            padding: 10px;
+        }
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 8px auto 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: conic-gradient(var(--primary) calc(var(--pct)*1%), rgba(255, 255, 255, 0.04) 0);
+            position: relative;
+            box-shadow: 0 0 40px rgba(79, 195, 247, 0.10);
+        }
+        body.light .score-circle {
+            background: conic-gradient(#1565c0 calc(var(--pct)*1%), #e0e0e0 0);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .score-circle::before {
+            content: "";
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            background: var(--bg1);
+            backdrop-filter: blur(4px);
+            border-radius: 50%;
+            opacity: 0.85;
+        }
+        body.light .score-circle::before {
+            background: #ffffff;
+            opacity: 0.9;
+        }
+        .score-circle .pct {
+            position: relative;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #fff;
+        }
+        body.light .score-circle .pct {
+            color: #000;
+        }
+        .score-circle .lbl {
+            position: relative;
+            font-size: 0.7rem;
+            color: var(--muted);
+        }
+        .mistake-item {
+            border: 1px solid var(--border-card);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+        body.light .mistake-item {
+            background: #ffffff;
+            border-color: #cccccc;
+        }
+        .mistake-item .m-q {
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        .mistake-item .m-you {
+            color: var(--danger);
+            font-size: 0.8rem;
+        }
+        body.light .mistake-item .m-you {
+            color: #c62828;
+        }
+        .mistake-item .m-correct {
+            color: var(--success);
+            font-size: 0.8rem;
+        }
+        body.light .mistake-item .m-correct {
+            color: #2e7d32;
+        }
+        .mistake-toggle {
+            background: none;
+            border: 1px solid var(--border-card);
+            border-radius: 8px;
+            padding: 4px 12px;
+            cursor: pointer;
+            color: var(--text);
+            font-size: 0.75rem;
+            transition: all 0.2s;
+            margin-top: 6px;
+        }
+        body.light .mistake-toggle {
+            border-color: #cccccc;
+            color: #000;
+        }
+        .mistake-toggle:hover {
+            background: rgba(79, 195, 247, 0.08);
+            border-color: var(--primary);
+        }
+        body.light .mistake-toggle:hover {
+            background: #e3f2fd;
+            border-color: #1565c0;
+        }
+        .mistake-detail {
+            margin-top: 10px;
+            border: 1px solid var(--border-card);
+            border-radius: 10px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            animation: fadeInUp 0.25s ease;
+        }
+        body.light .mistake-detail {
+            background: #f9f9f9;
+            border-color: #cccccc;
+        }
+        .mistake-detail .opt-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 4px 0;
+            border-bottom: 1px solid var(--border-card);
+        }
+        body.light .mistake-detail .opt-row {
+            border-color: #dddddd;
+        }
+        .mistake-detail .opt-row:last-child {
+            border-bottom: none;
+        }
+        .mistake-detail .opt-label {
+            flex: 1;
+        }
+        .mistake-detail .opt-status {
+            font-size: 1rem;
+            margin-right: 8px;
+        }
+        .hidden {
+            display: none !important;
+        }
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.7rem;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+            opacity: 0.6;
+        }
+        footer .name {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        body.light footer .name {
+            color: #1565c0;
+        }
+        .word-en {
+            display: inline-block;
+            cursor: default;
+            transition: background 0.15s, transform 0.1s;
+            padding: 1px 2px;
+            border-radius: 4px;
+            direction: ltr;
+            unicode-bidi: embed;
+        }
+        .word-en:active {
+            background: rgba(79, 195, 247, 0.15);
+            transform: scale(0.97);
+        }
+        body.light .word-en:active {
+            background: #bbdefb;
+        }
+        .word-en.speaking {
+            background: rgba(255, 213, 79, 0.25);
+            box-shadow: 0 0 10px rgba(255, 213, 79, 0.2);
+        }
+        body.light .word-en.speaking {
+            background: #fff9c4;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+        .speech-hint {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(6px);
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 999;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        body.light .speech-hint {
+            background: #f0f0f0;
+            color: #000;
+            border-color: #cccccc;
+        }
+        .speech-hint.show {
+            opacity: 1;
+        }
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(0);
+            animation: rippleAnim 0.5s linear;
+            pointer-events: none;
+        }
+        body.light .ripple {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        @keyframes rippleAnim {
+            to {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+        @media (max-width:480px) {
+            body {
+                padding: 8px 6px;
+            }
+            .app {
+                max-width: 100%;
+            }
+            .top-header h1 {
+                font-size: 1.5rem;
+            }
+            .card {
+                padding: 12px 10px;
+                margin-bottom: 10px;
+            }
+            .card-title {
+                font-size: 0.9rem;
+            }
+            .action-icon {
+                padding: 4px 8px;
+                min-width: 44px;
+            }
+            .action-icon .icon {
+                font-size: 1.2rem;
+            }
+            .action-icon .label {
+                font-size: 0.5rem;
+            }
+            .sub-options .action-btn {
+                font-size: 0.65rem;
+                padding: 4px 10px;
+            }
+            .section-item {
+                font-size: 0.8rem;
+                padding: 6px 10px;
+            }
+            .q-en {
+                font-size: 0.9rem;
+            }
+            .q-ar {
+                font-size: 0.8rem;
+            }
+            .option {
+                padding: 8px 10px;
+            }
+            .option .opt-en {
+                font-size: 0.8rem;
+            }
+            .option .opt-ar {
+                font-size: 0.75rem;
+            }
+            .big-btn {
+                font-size: 0.85rem;
+                padding: 10px;
+            }
+            .nav-row .big-btn {
+                font-size: 0.75rem;
+                padding: 8px;
+            }
+            .score-circle {
+                width: 100px;
+                height: 100px;
+            }
+            .score-circle::before {
+                width: 75px;
+                height: 75px;
+            }
+            .score-circle .pct {
+                font-size: 1.5rem;
+            }
+            #timer-badge {
+                font-size: 0.7rem;
+                padding: 0 10px;
+            }
+            .explain-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .explain-controls {
+                justify-content: flex-end;
+            }
+            .stats-row .stat .num {
+                font-size: 1.1rem;
+            }
+            .progress-ring {
+                width: 56px;
+                height: 56px;
+            }
+            .progress-ring svg {
+                width: 56px;
+                height: 56px;
+            }
+        }
+        @media (min-width:481px) and (max-width:768px) {
+            .app {
+                max-width: 90%;
+            }
+        }
+        .tf-badge {
+            display: inline-block;
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 1px 8px;
+            border-radius: 12px;
+            margin-right: 6px;
+            background: rgba(79, 195, 247, 0.15);
+            color: var(--primary);
+        }
+        body.light .tf-badge {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+
+        <div class="top-header">
+            <h1>   
+     بنك الدكاترة فسيولجي
+      (هام جدا)
+        
+
+            </h1>
+            <div class="sub">Physiology QBank</div>
+            <div class="creator"><i class="fas fa-user-graduate"></i> Created by <span class="name">MR. YASSIN THARWAT</span></div>
+        </div>
+
+        <div class="theme-toggle-wrap">
+            <div class="theme-toggle" id="themeToggle">
+                <button class="active" data-theme="dark" onclick="setTheme('dark')"><i class="fas fa-moon"></i></button>
+                <button data-theme="light" onclick="setTheme('light')"><i class="fas fa-sun"></i></button>
+            </div>
+        </div>
+
+        <div id="main-screen">
+            <div class="card">
+                <div class="card-title"><i class="fas fa-sliders-h"></i> الإجراءات</div>
+
+                <div class="action-icons">
+                    <div class="action-icon active" data-target="modeOptions" onclick="toggleOptions('modeOptions')">
+                        <span class="icon">🎯</span>
+                        <span class="label">المذاكرة</span>
+                    </div>
+                    <div class="action-icon" data-target="orderOptions" onclick="toggleOptions('orderOptions')">
+                        <span class="icon">🔀</span>
+                        <span class="label">الترتيب</span>
+                    </div>
+                    <div class="action-icon" data-target="langOptions" onclick="toggleOptions('langOptions')">
+                        <span class="icon">🌐</span>
+                        <span class="label">اللغة</span>
+                    </div>
+                    <div class="action-icon" data-target="timerOptions" onclick="toggleOptions('timerOptions')">
+                        <span class="icon">⏱️</span>
+                        <span class="label">المؤقت</span>
+                    </div>
+                </div>
+
+                <div id="modeOptions" class="sub-options show">
+                    <button class="action-btn active" data-mode="practice" onclick="selectMode('practice')">تدريب</button>
+                    <button class="action-btn" data-mode="test" onclick="selectMode('test')">اختبار</button>
+                </div>
+                <div id="orderOptions" class="sub-options">
+                    <button class="action-btn active" data-order="device" onclick="selectOrder('device')">بالترتيب</button>
+                    <button class="action-btn" data-order="random" onclick="selectOrder('random')">عشوائي</button>
+                </div>
+                <div id="langOptions" class="sub-options">
+                    <button class="action-btn active" data-translate="yes" onclick="selectTranslate('yes')">ترجمة</button>
+                    <button class="action-btn" data-translate="no" onclick="selectTranslate('no')">EN</button>
+                </div>
+                <div id="timerOptions" class="sub-options">
+                    <button class="action-btn active" data-timer="0" onclick="selectTimer(0)">تثبيت</button>
+                    <button class="action-btn" data-timer="5" onclick="selectTimer(5)">5s</button>
+                    <button class="action-btn" data-timer="10" onclick="selectTimer(10)">10s</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title"><i class="fas fa-layer-group"></i> الأجزاء المختارة</div>
+                <div id="section-list" class="section-list"></div>
+                <div id="section-explanation">
+                    <div class="explain-header">
+                        <h3 id="explain-title"></h3>
+                        <div class="explain-controls">
+                            <button class="lang-btn active" data-lang="ar" onclick="setExplainLang('ar')">🇪🇬 عربي</button>
+                            <button class="lang-btn" data-lang="en" onclick="setExplainLang('en')">🇬🇧 English</button>
+                            <button class="close-explain" onclick="closeExplanation()"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div id="explain-text" class="ar"></div>
+                </div>
+            </div>
+
+            <button class="big-btn" onclick="startQuiz()"><i class="fas fa-play"></i> أبداً المذاكرة</button>
+
+            <div class="card" id="progressCard">
+                <div class="card-title"><i class="fas fa-chart-line"></i> تقدمك</div>
+                <div class="progress-stats">
+                    <div class="progress-ring">
+                        <svg viewBox="0 0 70 70">
+                            <circle class="bg" cx="35" cy="35" r="28" />
+                            <circle class="fg" id="progressCircle" cx="35" cy="35" r="28" stroke-dashoffset="176" />
+                        </svg>
+                        <div class="center-text" id="progressPercent">0<small>%</small></div>
+                    </div>
+                    <div class="stats-row" style="flex:1; margin:0;">
+                        <div class="stat"><div class="num" id="statAttempted">0</div><div class="lbl">تم حله</div></div>
+                        <div class="stat"><div class="num" id="statCorrect">0</div><div class="lbl">صح</div></div>
+                        <div class="stat"><div class="num" id="statWrong">0</div><div class="lbl">غلط</div></div>
+                    </div>
+                </div>
+                <div class="weak-link" id="weakLink" onclick="startWeakSectionQuiz()">
+                    <i class="fas fa-lightbulb"></i> أضعف نقطة: <span id="weakSectionName">-</span> (<span id="weakSectionRate">0%</span>)
+                </div>
+                <div class="action-row-bottom">
+                    <button class="big-btn warn" onclick="reviewMistakes()"><i class="fas fa-undo-alt"></i> راجع أخطائي</button>
+                    <button class="big-btn secondary" onclick="resetProgress()"><i class="fas fa-trash-alt"></i> تصفير</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="screen-quiz">
+            <div class="quiz-meta">
+                <span id="quiz-position"><i class="fas fa-question-circle"></i> 1 / 10</span>
+                <span id="timer-badge" class="hidden"><i class="fas fa-hourglass-half"></i> 30</span>
+                <span id="quiz-score"><i class="fas fa-check-circle" style="color:var(--success);"></i> 0 <i class="fas fa-times-circle" style="color:var(--danger);margin-right:6px;"></i> 0</span>
+            </div>
+            <div class="progress-wrap"><div class="progress-bar" id="progress-bar"></div></div>
+
+            <div class="card">
+                <div class="q-header">
+                    <div class="q-tag" id="q-section-tag"><i class="fas fa-tag"></i> القسم</div>
+                </div>
+                <div class="q-en" id="q-en"></div>
+                <div class="q-ar" id="q-ar"></div>
+                <div class="options" id="options"></div>
+                <div id="feedback" class="feedback-box hidden"></div>
+                <div class="nav-row">
+                    <button class="big-btn secondary" id="btn-quit" onclick="quitQuiz()" style="flex:0 0 70px;"><i class="fas fa-sign-out-alt"></i></button>
+                    <button class="big-btn" id="btn-next" onclick="nextQuestion()" disabled><i class="fas fa-arrow-left"></i> التالي</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="screen-results">
+            <div class="card" style="text-align:center;">
+                <div class="card-title" style="border:none; text-align:center; padding:0;"><i class="fas fa-trophy" style="color:var(--accent);"></i> نتيجتك</div>
+                <div class="score-circle" id="score-circle" style="--pct:0;">
+                    <div class="pct" id="result-pct">0%</div>
+                    <div class="lbl">النسبة</div>
+                </div>
+                <div class="stats-row">
+                    <div class="stat"><div class="num" id="res-total">0</div><div class="lbl">إجمالي</div></div>
+                    <div class="stat"><div class="num" id="res-correct" style="color:var(--success);">0</div><div class="lbl">صح</div></div>
+                    <div class="stat"><div class="num" id="res-wrong" style="color:var(--danger);">0</div><div class="lbl">غلط</div></div>
+                </div>
+                <button class="big-btn" onclick="goHome()"><i class="fas fa-home"></i> الرئيسية</button>
+                <button class="big-btn warn hidden" id="btn-show-mistakes" onclick="showMistakesList()"><i class="fas fa-list-ul"></i> الأخطاء</button>
+            </div>
+            <div id="mistakes-list-wrap" class="card hidden">
+                <div class="card-title"><i class="fas fa-exclamation-triangle" style="color:var(--danger);"></i> أخطائك</div>
+                <div id="mistakes-list"></div>
+            </div>
+        </div>
+
+        <div id="speech-hint" class="speech-hint"><i class="fas fa-volume-up"></i> جارٍ النطق...</div>
+
+        <footer>
+            Created by <span class="name">MR. YASSIN THARWAT</span>
+        </footer>
+    </div>
+
+    <script>
+        // =====================================================================
+        // بنك الفسيولوجي – 153 سؤال (مطابق للملف الأصلي)
+        // تم تصحيح: إزالة الأسئلة الإضافية من CNS (T/F) ليصبح العدد 21
+        // تم تصحيح: سؤال معدل CSF (Q3) وسؤال الجلوكاجون (Endocrine Q24)
+        // =====================================================================
+        const QUESTION_BANK = [{
+            name: "الجهاز العصبي المركزي CNS",
+            nameEn: "Central Nervous System",
+            sectionTotal: 21,
+            questions: [
+                { num: 1, en: "All the following are functions of CSF EXCEPT:", ar: "جميع ما يلي من وظائف السائل الدماغي الشوكي ما عدا:", options: [{ en: "A. It supports and cushions brain and spinal cord against trauma.", ar: "أ. يدعم ويوسد الدماغ والنخاع الشوكي ضد الصدمات.", correct: false }, { en: "B. It transports nutrients, O2, and hormones to brain tissue.", ar: "ب. ينقل العناصر الغذائية والأكسجين والهرمونات إلى أنسجة الدماغ.", correct: false }, { en: "C. It increases the brain weight from 50gm to 1500gm.", ar: "ج. يزيد وزن الدماغ من 50 جم إلى 1500 جم.", correct: true }, { en: "D. It removes metabolic waste products from brain tissue.", ar: "د. يزيل الفضلات الأيضية من أنسجة الدماغ.", correct: false }], explain_ar: "CSF لا يزيد وزن الدماغ، بل يطفو الدماغ في السائل مما يقلل وزنه الفعال." },
+                { num: 2, en: "Which of the following sites inside the CNS contain CSF?", ar: "أي من المواقع التالية داخل الجهاز العصبي المركزي يحتوي على السائل الدماغي الشوكي؟", options: [{ en: "A. Epidural space.", ar: "أ. الفضاء فوق الجافية.", correct: false }, { en: "B. Subdural space.", ar: "ب. الفضاء تحت الجافية.", correct: false }, { en: "C. Subarachnoid space.", ar: "ج. الفضاء تحت العنكبوتية.", correct: false }, { en: "D. Sub-pial space.", ar: "د. الفضاء تحت الحنون.", correct: false }, { en: "E. Brain ventricles", ar: "هـ. بطينات الدماغ", correct: false }, { en: "F. Both C and E", ar: "و. كل من ج و هـ", correct: true }], explain_ar: "يوجد السائل الدماغي الشوكي في الفضاء تحت العنكبوتية وبطينات الدماغ." },
+                { num: 3, en: "Which of the following is the correct rate of CSF secretion?", ar: "أي من التالي هو المعدل الصحيح لإفراز السائل الدماغي الشوكي؟", options: [{ en: "A. Half liter / day.", ar: "أ. نصف لتر / يوم.", correct: true }, { en: "B. 140 ml/ day.", ar: "ب. 140 مل / يوم.", correct: false }, { en: "C. 500 ml/ week.", ar: "ج. 500 مل / أسبوع.", correct: false }, { en: "D. 1500 ml/ week.", ar: "د. 1500 مل / أسبوع.", correct: false }], explain_ar: "معدل إفراز السائل الدماغي الشوكي حوالي 500 مل/يوم (نصف لتر/يوم)." },
+                { num: 4, en: "Which of the following lobes of the brain is concerned with the motor functions?", ar: "أي من فصوص الدماغ التالية مسؤول عن الوظائف الحركية؟", options: [{ en: "A. Frontal lobe.", ar: "أ. الفص الجبهي.", correct: true }, { en: "B. Parietal lobe.", ar: "ب. الفص الجداري.", correct: false }, { en: "C. Temporal lobe.", ar: "ج. الفص الصدغي.", correct: false }, { en: "D. Occipital lobe.", ar: "د. الفص القذالي.", correct: false }], explain_ar: "الفص الجبهي مسؤول عن الوظائف الحركية الإرادية." },
+                { num: 5, en: "Which of the following areas of the brain is concerned with keeping your balance?", ar: "أي من مناطق الدماغ التالية مسؤول عن الحفاظ على التوازن؟", options: [{ en: "A. Frontal lobe.", ar: "أ. الفص الجبهي.", correct: false }, { en: "B. Parietal lobe.", ar: "ب. الفص الجداري.", correct: false }, { en: "C. Temporal lobe.", ar: "ج. الفص الصدغي.", correct: false }, { en: "D. Cerebellum.", ar: "د. المخيخ.", correct: true }, { en: "E. Brain stem.", ar: "هـ. جذع الدماغ.", correct: false }], explain_ar: "المخيخ هو المسؤول الرئيسي عن التوازن والتنسيق الحركي." },
+                { num: 6, en: "Which of the following areas of the brain stem contains the vital centers?", ar: "أي من مناطق جذع الدماغ التالية يحتوي على المراكز الحيوية؟", options: [{ en: "A. Midbrain.", ar: "أ. الدماغ المتوسط.", correct: false }, { en: "B. Pons.", ar: "ب. الجسر.", correct: false }, { en: "C. Medulla oblongata.", ar: "ج. النخاع المستطيل.", correct: true }], explain_ar: "النخاع المستطيل يحتوي على المراكز الحيوية (التنفس، القلب، الأوعية الدموية)." },
+                { num: 7, en: "Which of the following is the best site for getting CSF sample?", ar: "أي من التالي هو أفضل موقع للحصول على عينة من السائل الدماغي الشوكي؟", options: [{ en: "A. Below thoracic 12.", ar: "أ. أسفل الفقرة الصدرية 12.", correct: false }, { en: "B. Below cervical 7.", ar: "ب. أسفل الفقرة العنقية 7.", correct: false }, { en: "C. Below lumbar 2.", ar: "ج. أسفل الفقرة القطنية 2.", correct: true }, { en: "D. Below the mid-thoracic vertebra.", ar: "د. أسفل الفقرة الصدرية الوسطى.", correct: false }], explain_ar: "أفضل موقع هو أسفل الفقرة القطنية L2 حيث ينتهي النخاع الشوكي." },
+                { num: 8, en: "Which of the following creates blood brain barrier?", ar: "أي من التالي يشكل الحاجز الدموي الدماغي؟", options: [{ en: "A. CNS capillaries basal lamina.", ar: "أ. الغشاء القاعدي للشعيرات الدموية في الجهاز العصبي المركزي.", correct: false }, { en: "B. Foot processes of astrocyte.", ar: "ب. العمليات القدمية للخلايا النجمية.", correct: false }, { en: "C. Tight junctions between the foot processes of astrocytes.", ar: "ج. الوصلات المحكمة بين العمليات القدمية للخلايا النجمية.", correct: false }, { en: "D. Tight junctions between the endothelial cells of CNS capillaries.", ar: "د. الوصلات المحكمة بين الخلايا البطانية للشعيرات الدموية في الجهاز العصبي المركزي.", correct: true }], explain_ar: "الحاجز الدموي الدماغي يتكون من الوصلات المحكمة بين الخلايا البطانية للشعيرات الدموية." },
+                { num: 9, en: "Which of the following will cross the blood brain barrier easily?", ar: "أي من التالي يعبر الحاجز الدموي الدماغي بسهولة؟", options: [{ en: "A. Methotrexate.", ar: "أ. الميثوتريكسيت.", correct: false }, { en: "B. Penicillin.", ar: "ب. البنسلين.", correct: false }, { en: "C. Dopamine.", ar: "ج. الدوبامين.", correct: false }, { en: "D. Ethanol.", ar: "د. الإيثانول.", correct: true }], explain_ar: "الإيثانول (الكحول) يعبر الحاجز الدموي الدماغي بسهولة لأنه دهني الذوبان." },
+                { num: 10, en: "All the following are characters of chemical synapse EXCEPT:", ar: "جميع ما يلي من خصائص المشابك الكيميائية ما عدا:", options: [{ en: "A. No gap junctions.", ar: "أ. لا توجد وصلات محكمة.", correct: false }, { en: "B. Synaptic cleft at chemical synapse is wide.", ar: "ب. الشق المشبكي في المشابك الكيميائية واسع.", correct: false }, { en: "C. Transmission of information takes place by a chemical messenger.", ar: "ج. نقل المعلومات يتم بواسطة رسول كيميائي.", correct: false }, { en: "D. Transmission of information may be bi-directional.", ar: "د. نقل المعلومات قد يكون ثنائي الاتجاه.", correct: true }], explain_ar: "المشابك الكيميائية أحادية الاتجاه (من قبل إلى بعد مشبكي) وليست ثنائية." },
+                { num: 11, en: "All the following are characters of electrical synapse EXCEPT:", ar: "جميع ما يلي من خصائص المشابك الكهربائية ما عدا:", options: [{ en: "A. No gap junctions.", ar: "أ. لا توجد وصلات محكمة.", correct: true }, { en: "B. Synaptic cleft is narrow.", ar: "ب. الشق المشبكي ضيق.", correct: false }, { en: "C. Ionic current flows directly from presynaptic axon terminal into postsynaptic cell.", ar: "ج. التيار الأيوني يتدفق مباشرة من الطرف المحوري قبل المشبكي إلى الخلية بعد المشبكية.", correct: false }, { en: "D. Transmission of information may be bi-directional.", ar: "د. نقل المعلومات قد يكون ثنائي الاتجاه.", correct: false }], explain_ar: "المشابك الكهربائية تحتوي على وصلات محكمة (gap junctions) وليست خالية منها." },
+                { num: 12, en: "Which of the following is true concerning oligodendrocytes?", ar: "أي من التالي صحيح فيما يتعلق بالخلايا قليلة التغصن؟", options: [{ en: "A. They are macrophages that phagocytize debris of the nerve tissues.", ar: "أ. هي بلاعم تبلعم حطام الأنسجة العصبية.", correct: false }, { en: "B. They are the myelin forming cells of the CNS.", ar: "ب. هي الخلايا المكونة للميالين في الجهاز العصبي المركزي.", correct: true }, { en: "C. They buffer potassium concentration of ECF.", ar: "ج. تخفف تركيز البوتاسيوم في السائل خارج الخلوي.", correct: false }, { en: "D. They line the central canal of the spinal cord and ventricles of the brain.", ar: "د. تبطن القناة المركزية للنخاع الشوكي وبطينات الدماغ.", correct: false }, { en: "E. They are the myelin forming cells of the PNS.", ar: "هـ. هي الخلايا المكونة للميالين في الجهاز العصبي المحيطي.", correct: false }], explain_ar: "الخلايا قليلة التغصن (Oligodendrocytes) هي خلايا تكوين الميالين في الجهاز العصبي المركزي." },
+                { num: 13, en: "Which of the following is true concerning astrocytes?", ar: "أي من التالي صحيح فيما يتعلق بالخلايا النجمية؟", options: [{ en: "A. They are macrophages that phagocytize debris of the nerve tissues.", ar: "أ. هي بلاعم تبلعم حطام الأنسجة العصبية.", correct: false }, { en: "B. They arise from monocytes entering the CNS through abnormal blood vessels.", ar: "ب. تنشأ من الخلايا الوحيدة التي تدخل الجهاز العصبي المركزي عبر الأوعية الدموية غير الطبيعية.", correct: false }, { en: "C. They play a role in the metabolism of certain neurotransmitters (GABA, serotonin, and glutamate).", ar: "ج. تلعب دورًا في استقلاب بعض الناقلات العصبية (GABA، السيروتونين، والغلوتامات).", correct: true }, { en: "D. They line the central canal of the spinal cord and ventricles of the brain.", ar: "د. تبطن القناة المركزية للنخاع الشوكي وبطينات الدماغ.", correct: false }, { en: "E. They are the myelin forming cells of the PNS.", ar: "هـ. هي الخلايا المكونة للميالين في الجهاز العصبي المحيطي.", correct: false }], explain_ar: "الخلايا النجمية تلعب دورًا في استقلاب الناقلات العصبية GABA والسيروتونين والغلوتامات." },
+                { num: 14, en: "All the following are components of stretch reflex EXCEPT:", ar: "جميع ما يلي من مكونات منعكس التمدد ما عدا:", options: [{ en: "A. Muscle spindle.", ar: "أ. المغزل العضلي.", correct: false }, { en: "B. Group Ia primary and group II secondary afferents.", ar: "ب. الألياف الواردة الأولية من المجموعة Ia والثانوية من المجموعة II.", correct: false }, { en: "C. Anterior horn cells of the spinal cord.", ar: "ج. خلايا القرن الأمامي للنخاع الشوكي.", correct: false }, { en: "D. Cerebral cortex.", ar: "د. القشرة المخية.", correct: true }, { en: "E. Alpha and gamma efferent.", ar: "هـ. الألياف الصادرة ألفا وغاما.", correct: false }], explain_ar: "منعكس التمدد هو منعكس نخاعي ولا يشمل القشرة المخية." },
+                { num: 15, en: "All the following are functions of muscle tone EXCEPT:", ar: "جميع ما يلي من وظائف النغمة العضلية ما عدا:", options: [{ en: "A. It keeps the body erect position against the withdrawal force of gravity.", ar: "أ. يحافظ على وضعية الجسم المنتصبة ضد قوة الجاذبية.", correct: false }, { en: "B. It helps you to walk.", ar: "ب. يساعدك على المشي.", correct: false }, { en: "C. It helps to regulate body temperature.", ar: "ج. يساعد في تنظيم درجة حرارة الجسم.", correct: false }, { en: "D. It maintains the internal organs in their normal position as kidney.", ar: "د. يحافظ على الأعضاء الداخلية في وضعها الطبيعي مثل الكلى.", correct: false }, { en: "E. It antagonizes venous return to the heart.", ar: "هـ. يعيق عودة الدم الوريدي إلى القلب.", correct: true }], explain_ar: "النغمة العضلية تساعد في عودة الدم الوريدي وليس العكس." },
+                { num: 16, en: "Which of the following lobes of the brain is concerned with the sensory functions?", ar: "أي من فصوص الدماغ التالية مسؤول عن الوظائف الحسية؟", options: [{ en: "A. Temporal lobe.", ar: "أ. الفص الصدغي.", correct: false }, { en: "B. Occipital lobe.", ar: "ب. الفص القذالي.", correct: false }, { en: "C. Frontal lobe.", ar: "ج. الفص الجبهي.", correct: false }, { en: "D. Parietal lobe.", ar: "د. الفص الجداري.", correct: true }], explain_ar: "الفص الجداري مسؤول عن الوظائف الحسية (الإحساس باللمس والألم والضغط والحركة)." },
+                { num: 17, en: "Which of the following is true concerning sensory neurons?", ar: "أي من التالي صحيح فيما يتعلق بالخلايا العصبية الحسية؟", options: [{ en: "A. Consists of chain of 10 neurons before their termination in the cortex.", ar: "أ. تتكون من سلسلة من 10 خلايا عصبية قبل انتهائها في القشرة.", correct: false }, { en: "B. Send collateral branches within spinal cord that participate in local reflexes.", ar: "ب. ترسل فروع جانبية داخل النخاع الشوكي تشارك في المنعكسات الموضعية.", correct: true }, { en: "C. Fibers usually continue on the same side prior to their termination.", ar: "ج. تستمر الألياف عادة على نفس الجانب قبل انتهائها.", correct: false }, { en: "D. Convey motor information from cerebral cortex to muscles.", ar: "د. تنقل المعلومات الحركية من القشرة المخية إلى العضلات.", correct: false }], explain_ar: "الخلايا العصبية الحسية ترسل فروعًا جانبية في النخاع الشوكي تشارك في المنعكسات الموضعية." },
+                { num: 18, en: "Which of the following sensations is carried out by the Gracil and Cuneate tracts?", ar: "أي من الأحاسيس التالية تنقلها الحزمة النحيفة والحزمة الإسفينية؟", options: [{ en: "A. Temperature sensation.", ar: "أ. الإحساس بدرجة الحرارة.", correct: false }, { en: "B. Tactile sensation.", ar: "ب. الإحساس باللمس.", correct: false }, { en: "C. Proprioceptive sensation.", ar: "ج. الإحساس بالاستقبال العميق.", correct: true }, { en: "D. Pain sensation.", ar: "د. الإحساس بالألم.", correct: false }], explain_ar: "الحزمة النحيفة والإسفينية تنقلان الإحساس بالاستقبال العميق (الوعي بوضعية الجسم والحركة)." },
+                { num: 19, en: "Which of the following sites contain the upper motor neuron?", ar: "أي من المواقع التالية يحتوي على الخلية العصبية الحركية العلوية؟", options: [{ en: "A. Temporal cortex.", ar: "أ. القشرة الصدغية.", correct: false }, { en: "B. Frontal lobe of the brain.", ar: "ب. الفص الجبهي للدماغ.", correct: true }, { en: "C. Brain stem motor nuclei.", ar: "ج. النوى الحركية لجذع الدماغ.", correct: false }, { en: "D. Parietal lobe of the brain.", ar: "د. الفص الجداري للدماغ.", correct: false }, { en: "E. Anterior horn cells of the spinal cord.", ar: "هـ. خلايا القرن الأمامي للنخاع الشوكي.", correct: false }], explain_ar: "الخلية العصبية الحركية العلوية توجد في الفص الجبهي للدماغ (القشرة الحركية)." },
+                { num: 20, en: "Which of the following is responsible for transmission of nerve impulses for long distances along neurons?", ar: "أي من التالي مسؤول عن نقل النبضات العصبية لمسافات طويلة على طول الخلايا العصبية؟", options: [{ en: "A. Action potential.", ar: "أ. جهد الفعل.", correct: true }, { en: "B. Synaptic chemical transmission.", ar: "ب. النقل المشبكي الكيميائي.", correct: false }, { en: "C. Synaptic electrical transmission.", ar: "ج. النقل المشبكي الكهربائي.", correct: false }], explain_ar: "جهد الفعل هو المسؤول عن نقل النبضات العصبية لمسافات طويلة على طول المحور العصبي." },
+                { num: 21, en: "All of the following are characters of the electrical synapse EXCEPT:", ar: "جميع ما يلي من خصائص المشابك الكهربائية ما عدا:", options: [{ en: "A. They represent most of the synapses in the CNS.", ar: "أ. تمثل معظم المشابك في الجهاز العصبي المركزي.", correct: true }, { en: "B. The ionic current flows directly from presynaptic axon terminal into postsynaptic cell.", ar: "ب. التيار الأيوني يتدفق مباشرة من الطرف المحوري قبل المشبكي إلى الخلية بعد المشبكية.", correct: false }, { en: "C. They permit ATP and second messengers to be transferred between neurons.", ar: "ج. تسمح بنقل ATP والرسائل الثانية بين الخلايا العصبية.", correct: false }, { en: "D. Responsible for rapid transmission and synchronization of activity.", ar: "د. مسؤولة عن النقل السريع وتزامن النشاط.", correct: false }], explain_ar: "المشابك الكهربائية لا تمثل معظم المشابك في الجهاز العصبي المركزي (المشابك الكيميائية هي الأكثر)." }
+            ]
+        }, {
+            name: "الجهاز العصبي الذاتي ANS",
+            nameEn: "Autonomic Nervous System",
+            sectionTotal: 18,
+            questions: [{
+                num: 1,
+                en: "The difference between somatic and autonomic nervous system (ANS) is that:",
+                ar: "الفرق بين الجهاز العصبي الجسدي والجهاز العصبي الذاتي (ANS) هو:",
+                options: [{ en: "A. Autonomic nerves is a voluntary function", ar: "أ. الأعصاب الذاتية وظيفة إرادية", correct: false }, { en: "B. Autonomic nerves supplies Cardiac, smooth muscles & glands", ar: "ب. الأعصاب الذاتية تغذي القلب والعضلات الملساء والغدد", correct: true }, { en: "C. Autonomic is always excitatory", ar: "ج. الجهاز الذاتي دائمًا استثاري", correct: false }, { en: "D. Autonomic nerve fibers arises from anterior horn", ar: "د. الألياف العصبية الذاتية تنشأ من القرن الأمامي", correct: false }],
+                explain_ar: "الجهاز العصبي الذاتي يغذي القلب والعضلات الملساء والغدد، وهو لا إرادي."
+            }, {
+                num: 2,
+                en: "Regarding ANS:",
+                ar: "فيما يتعلق بالجهاز العصبي الذاتي:",
+                options: [{ en: "A. Origin of parasympathetic arises from thoracolumbar", ar: "أ. منشأ الجهاز نظير الودي من المنطقة الصدرية القطنية", correct: false }, { en: "B. All preganglionic sympathetic and parasympathetic is adrenergic", ar: "ب. جميع الألياف قبل العقدية الودية ونظير الودية أدرينالية", correct: false }, { en: "C. Location of the ganglia is Far from visceral effector organs; in parasympathetic", ar: "ج. موقع العقد بعيد عن الأعضاء المستجيبة الحشوية؛ في نظير الودي", correct: false }, { en: "D. Origin of sympathetic arises from thoracolumbar", ar: "د. منشأ الجهاز الودي من المنطقة الصدرية القطنية", correct: true }],
+                explain_ar: "الجهاز الودي منشأه من المنطقة الصدرية القطنية (T1-L2)."
+            }, {
+                num: 3,
+                en: "The cranial nerves that shares in origin of parasympathetic are all the following except:",
+                ar: "الأعصاب القحفية التي تشارك في منشأ الجهاز نظير الودي هي جميع ما يلي ما عدا:",
+                options: [{ en: "A. III", ar: "أ. العصب الثالث", correct: false }, { en: "B. VII", ar: "ب. العصب السابع", correct: false }, { en: "C. IX", ar: "ج. العصب التاسع", correct: false }, { en: "D. VI", ar: "د. العصب السادس", correct: true }],
+                explain_ar: "الأعصاب القحفية التي تشارك في نظير الودي هي III، VII، IX، X. العصب VI (المبعد) لا يشارك."
+            }, {
+                num: 4,
+                en: "Regarding the effects of sympathetic nervous system, all of the following are true except:",
+                ar: "فيما يتعلق بتأثيرات الجهاز العصبي الودي، جميع ما يلي صحيح ما عدا:",
+                options: [{ en: "A. It increases diameter of pupil", ar: "أ. يزيد قطر الحدقة", correct: false }, { en: "B. It increased Heart function Heart rate Force of contraction", ar: "ب. يزيد وظيفة القلب ومعدل النبض وقوة الانقباض", correct: false }, { en: "C. It increases Vasomotor tone to blood vessels", ar: "ج. يزيد النغمة الوعائية للأوعية الدموية", correct: false }, { en: "D. It increases bowel and bladder emptying", ar: "د. يزيد إفراغ الأمعاء والمثانة", correct: true }],
+                explain_ar: "الجهاز الودي يثبط إفراغ الأمعاء والمثانة (يقلل الحركة الدودية ويدفع العضلة العاصرة للانقباض)."
+            }, {
+                num: 5,
+                en: "The parasympathetic nervous system:",
+                ar: "الجهاز العصبي نظير الودي:",
+                options: [{ en: "A. Increased sweat secretion", ar: "أ. يزيد إفراز العرق", correct: false }, { en: "B. Increased diameter of bronchioles", ar: "ب. يزيد قطر القصيبات", correct: false }, { en: "C. Increased secretion of adrenaline from adrenal medulla", ar: "ج. يزيد إفراز الأدرينالين من النخاع الكظري", correct: false }, { en: "D. It increases GIT function Peristalsis and secretion", ar: "د. يزيد وظيفة الجهاز الهضمي والحركة الدودية والإفراز", correct: true }],
+                explain_ar: "الجهاز نظير الودي يزيد حركة الأمعاء الدودية والإفرازات الهضمية."
+            }, {
+                num: 6,
+                en: "Types of ion channels includes:",
+                ar: "أنواع القنوات الأيونية تشمل:",
+                options: [{ en: "A. Leaky channels", ar: "أ. القنوات المتسربة", correct: false }, { en: "B. Voltage gated", ar: "ب. المعتمدة على الجهد", correct: false }, { en: "C. Ligand gated", ar: "ج. المعتمدة على الرابط", correct: false }, { en: "D. All of the above", ar: "د. جميع ما سبق", correct: true }],
+                explain_ar: "أنواع القنوات الأيونية تشمل القنوات المتسربة والمعتمدة على الجهد والمعتمدة على الرابط."
+            }, {
+                num: 7,
+                en: "An example of leaky channels is:",
+                ar: "مثال على القنوات المتسربة هو:",
+                options: [{ en: "A. Voltage-gated sodium channels.", ar: "أ. قنوات الصوديوم المعتمدة على الجهد.", correct: false }, { en: "B. Acetylcholine gated channels", ar: "ب. قنوات الأسيتيل كولين المعتمدة على الرابط.", correct: false }, { en: "C. Potassium channels on most cell membranes.", ar: "ج. قنوات البوتاسيوم على معظم الأغشية الخلوية.", correct: true }, { en: "D. None of the above", ar: "د. لا شيء مما سبق", correct: false }],
+                explain_ar: "قنوات البوتاسيوم المتسربة موجودة على معظم الأغشية الخلوية وهي دائمًا مفتوحة."
+            }, {
+                num: 8,
+                en: "Voltage-gated channels:",
+                ar: "القنوات المعتمدة على الجهد:",
+                options: [{ en: "A. Always open", ar: "أ. مفتوحة دائمًا", correct: false }, { en: "B. Has no gate", ar: "ب. ليس لها بوابة", correct: false }, { en: "C. Open or close in response to a membrane voltage change", ar: "ج. تفتح أو تغلق استجابة لتغير جهد الغشاء", correct: true }, { en: "D. Includes a receptor to a specific substance (ligand)", ar: "د. تحتوي على مستقبل لمادة محددة (رابط)", correct: false }],
+                explain_ar: "القنوات المعتمدة على الجهد تفتح أو تغلق استجابة لتغير جهد الغشاء."
+            }, {
+                num: 9,
+                en: "Autonomic nerve fibers arise from the anterior horn of the spinal cord.",
+                ar: "الألياف العصبية الذاتية تنشأ من القرن الأمامي للنخاع الشوكي.",
+                isTF: true,
+                correct: false,
+                explain_ar: "الألياف الذاتية تنشأ من القرن الجانبي (lateral horn)، بينما الألياف الجسدية تنشأ من القرن الأمامي."
+            }, {
+                num: 10,
+                en: "Somatic nerve arises from anterior horn of spinal cord.",
+                ar: "العصب الجسدي ينشأ من القرن الأمامي للنخاع الشوكي.",
+                isTF: true,
+                correct: true,
+                explain_ar: "الألياف الجسدية الحركية تنشأ من خلايا القرن الأمامي."
+            }, {
+                num: 11,
+                en: "Autonomic nerve system is involuntary.",
+                ar: "الجهاز العصبي الذاتي لا إرادي.",
+                isTF: true,
+                correct: true,
+                explain_ar: "الجهاز العصبي الذاتي ينظم الوظائف اللاإرادية مثل ضربات القلب والهضم."
+            }, {
+                num: 12,
+                en: "Autonomic nerves arise from lateral horn.",
+                ar: "الأعصاب الذاتية تنشأ من القرن الجانبي.",
+                isTF: true,
+                correct: true,
+                explain_ar: "الخلايا العصبية قبل العقدية للجهاز الذاتي تنشأ من القرن الجانبي للنخاع الشوكي."
+            }, {
+                num: 13,
+                en: "Location of the ganglia is far from visceral effector organs in parasympathetic.",
+                ar: "موقع العقد بعيد عن الأعضاء المستجيبة الحشوية في الجهاز نظير الودي.",
+                isTF: true,
+                correct: false,
+                explain_ar: "في نظير الودي، العقد قريبة من الأعضاء المستجيبة (عقد طرفية)."
+            }, {
+                num: 14,
+                en: "All preganglionic sympathetic and parasympathetic is cholinergic.",
+                ar: "جميع الألياف قبل العقدية الودية ونظير الودية كولينية.",
+                isTF: true,
+                correct: true,
+                explain_ar: "جميع الألياف قبل العقدية في كلا الجهازين الودي ونظير الودي تفرز الأسيتيل كولين."
+            }, {
+                num: 15,
+                en: "Origin of parasympathetic is craniosacral.",
+                ar: "منشأ الجهاز نظير الودي هو قحفي عجزي.",
+                isTF: true,
+                correct: true,
+                explain_ar: "نظير الودي منشأه من الأعصاب القحفية (III، VII، IX، X) والمنطقة العجزية (S2-S4)."
+            }, {
+                num: 16,
+                en: "The parasympathetic nervous system decreases GIT motility and secretion.",
+                ar: "الجهاز العصبي نظير الودي يقلل حركة الأمعاء الدودية والإفراز.",
+                isTF: true,
+                correct: false,
+                explain_ar: "نظير الودي يزيد حركة الأمعاء الدودية والإفراز الهضمي."
+            }, {
+                num: 17,
+                en: "The parasympathetic increases sweat secretion.",
+                ar: "الجهاز نظير الودي يزيد إفراز العرق.",
+                isTF: true,
+                correct: false,
+                explain_ar: "إفراز العرق تحت سيطرة الجهاز الودي وليس نظير الودي."
+            }, {
+                num: 18,
+                en: "Sympathetic nervous system decreased diameter of pupil.",
+                ar: "الجهاز العصبي الودي يقلل قطر الحدقة.",
+                isTF: true,
+                correct: false,
+                explain_ar: "الجهاز الودي يوسع الحدقة (يزيد القطر) عن طريق انقباض العضلة الموسعة للقزحية."
+            }]
+        }, {
+            name: "العضلات و الجهاز العصبي Muscle & Nervous",
+            nameEn: "Muscle & Nervous System",
+            sectionTotal: 25,
+            questions: [{
+                num: 1,
+                en: "Regarding resting membrane potential (RMP), it equals:",
+                ar: "فيما يتعلق بجهد الغشاء الراحة (RMP)، فإنه يساوي:",
+                options: [{ en: "A. -70mV", ar: "أ. -70 ميلي فولت", correct: true }, { en: "B. -50 mv", ar: "ب. -50 ميلي فولت", correct: false }, { en: "C. +70 mv", ar: "ج. +70 ميلي فولت", correct: false }, { en: "D. +50 mv", ar: "د. +50 ميلي فولت", correct: false }],
+                explain_ar: "جهد الغشاء الراحة في الخلايا العصبية هو حوالي -70 ميلي فولت."
+            }, {
+                num: 2,
+                en: "RMP It is established by:",
+                ar: "جهد الغشاء الراحة يتأسس بواسطة:",
+                options: [{ en: "A. Diffusion of the ions across the membrane due Ex. Leaky potassium", ar: "أ. انتشار الأيونات عبر الغشاء مثل البوتاسيوم المتسرب", correct: false }, { en: "B. Sodium/ potassium pump has indirect role in origin of RMP", ar: "ب. مضخة الصوديوم/البوتاسيوم لها دور غير مباشر في منشأ RMP", correct: false }, { en: "C. Difference in Na and K ion concentration between inside and outside membrane", ar: "ج. الفرق في تركيز أيونات الصوديوم والبوتاسيوم بين داخل وخارج الغشاء", correct: false }, { en: "D. All of the above", ar: "د. جميع ما سبق", correct: true }],
+                explain_ar: "RMP يتأسس بفعل انتشار الأيونات، مضخة الصوديوم/البوتاسيوم، وفرق التركيز الأيوني."
+            }, {
+                num: 3,
+                en: "Presence of concentration difference of ions plays role in RMP, which of the following is true:",
+                ar: "وجود فرق تركيز الأيونات يلعب دورًا في RMP، أي من التالي صحيح:",
+                options: [{ en: "A. Sodium is concentrated inside membrane mainly", ar: "أ. الصوديوم مركز داخل الغشاء بشكل رئيسي", correct: false }, { en: "B. Potassium is concentrated outside the cell", ar: "ب. البوتاسيوم مركز خارج الخلية", correct: false }, { en: "C. Sodium is concentrated outside the cell mainly", ar: "ج. الصوديوم مركز خارج الخلية بشكل رئيسي", correct: true }, { en: "D. None of the above", ar: "د. لا شيء مما سبق", correct: false }],
+                explain_ar: "الصوديوم مركز خارج الخلية، والبوتاسيوم مركز داخل الخلية."
+            }, {
+                num: 4,
+                en: "Which ion is responsible for the repolarization phase:",
+                ar: "أي أيون مسؤول عن طور إعادة الاستقطاب:",
+                options: [{ en: "A. K ions", ar: "أ. أيونات البوتاسيوم", correct: true }, { en: "B. Na ions", ar: "ب. أيونات الصوديوم", correct: false }, { en: "C. Ca++ ions", ar: "ج. أيونات الكالسيوم", correct: false }, { en: "D. None of the above", ar: "د. لا شيء مما سبق", correct: false }],
+                explain_ar: "خروج أيونات البوتاسيوم من الخلية هو المسؤول عن طور إعادة الاستقطاب."
+            }, {
+                num: 5,
+                en: "The depolarization phase includes:",
+                ar: "طور إزالة الاستقطاب يشمل:",
+                options: [{ en: "A. Caused by opening of voltage gated sodium channels", ar: "أ. ناتج عن فتح قنوات الصوديوم المعتمدة على الجهد", correct: true }, { en: "B. The inside of membrane become negative to outside", ar: "ب. يصبح داخل الغشاء سالبًا مقارنة بالخارج", correct: false }, { en: "C. K ions moves to outside during it", ar: "ج. تتحرك أيونات البوتاسيوم إلى الخارج أثناءه", correct: false }, { en: "D. Na ions moves to outside during it", ar: "د. تتحرك أيونات الصوديوم إلى الخارج أثناءه", correct: false }],
+                explain_ar: "إزالة الاستقطاب يحدث بدخول أيونات الصوديوم إلى الخلية عبر قنوات الصوديوم المعتمدة على الجهد."
+            }, {
+                num: 6,
+                en: "Which channel plays an important role in origin of RMP:",
+                ar: "أي قناة تلعب دورًا مهمًا في منشأ RMP:",
+                options: [{ en: "A. Voltage gated Na channels", ar: "أ. قنوات الصوديوم المعتمدة على الجهد", correct: false }, { en: "B. Voltage gated K channels", ar: "ب. قنوات البوتاسيوم المعتمدة على الجهد", correct: false }, { en: "C. K leaky channels", ar: "ج. قنوات البوتاسيوم المتسربة", correct: true }, { en: "D. None of the above", ar: "د. لا شيء مما سبق", correct: false }],
+                explain_ar: "قنوات البوتاسيوم المتسربة تلعب الدور الرئيسي في منشأ جهد الغشاء الراحة."
+            }, {
+                num: 7,
+                en: "Na+ / K+ Pump:",
+                ar: "مضخة الصوديوم / البوتاسيوم:",
+                options: [{ en: "A. Pumps 3 sodium ions outside and 2 potassium ions to the inside.", ar: "أ. تضخ 3 أيونات صوديوم للخارج و2 بوتاسيوم للداخل.", correct: true }, { en: "B. Pumps 2 sodium ions outside and 3 potassium ions to the inside.", ar: "ب. تضخ 2 أيونات صوديوم للخارج و3 بوتاسيوم للداخل.", correct: false }, { en: "C. Pumps 3 sodium to inside and 2 potassium to outside", ar: "ج. تضخ 3 صوديوم للداخل و2 بوتاسيوم للخارج", correct: false }, { en: "D. None of the above", ar: "د. لا شيء مما سبق", correct: false }],
+                explain_ar: "مضخة Na+/K+ تضخ 3 أيونات صوديوم إلى خارج الخلية و2 بوتاسيوم إلى داخل الخلية."
+            }, {
+                num: 8,
+                en: "Regarding Absolute refractory period (ARP):",
+                ar: "فيما يتعلق بفترة الامتناع المطلقة (ARP):",
+                options: [{ en: "A. Action potential generation is easier", ar: "أ. توليد جهد الفعل أسهل", correct: false }, { en: "B. Any stimulus whatever could excite the membrane", ar: "ب. أي مثير يمكن أن يثير الغشاء", correct: false }, { en: "C. It occur because of the inactivation of Voltage gated -Na+ channels.", ar: "ج. يحدث بسبب تعطيل قنوات الصوديوم المعتمدة على الجهد.", correct: true }, { en: "D. None of the above", ar: "د. لا شيء مما سبق", correct: false }],
+                explain_ar: "فترة الامتناع المطلقة تحدث بسبب تعطيل قنوات الصوديوم المعتمدة على الجهد، ولا يمكن توليد جهد فعل جديد."
+            }, {
+                num: 9,
+                en: "Saltatory conduction:",
+                ar: "التوصيل القفزي:",
+                options: [{ en: "A. Occur in unmyelinated axons", ar: "أ. يحدث في المحاور غير الميالينية", correct: false }, { en: "B. It decreases the velocity of conduction", ar: "ب. يقلل سرعة التوصيل", correct: false }, { en: "C. Saves energy needed", ar: "ج. يوفر الطاقة اللازمة", correct: true }, { en: "D. All of the above", ar: "د. جميع ما سبق", correct: false }],
+                explain_ar: "التوصيل القفزي في المحاور الميالينية يوفر الطاقة ويزيد سرعة التوصيل."
+            }, {
+                num: 10,
+                en: "Regarding muscle types:",
+                ar: "فيما يتعلق بأنواع العضلات:",
+                options: [{ en: "A. Skeletal -- is voluntary, striated muscles attached to bones", ar: "أ. الهيكلية -- إرادية، مخططة، متصلة بالعظام", correct: true }, { en: "B. Cardiac -- is involuntary, not striated muscle of the heart wall", ar: "ب. القلبية -- لا إرادية، غير مخططة، عضلة جدار القلب", correct: false }, { en: "C. Smooth -- involuntary, striated muscle of the stomach, intestine, and blood vessels", ar: "ج. الملساء -- لا إرادية، مخططة، عضلة المعدة والأمعاء والأوعية الدموية", correct: false }, { en: "D. None of the above", ar: "د. لا شيء مما سبق", correct: false }],
+                explain_ar: "العضلات الهيكلية إرادية ومخططة، والقلبية لا إرادية ومخططة، والملساء لا إرادية وغير مخططة."
+            }, {
+                num: 11,
+                en: "Skeletal muscles is:",
+                ar: "العضلات الهيكلية هي:",
+                options: [{ en: "A. Voluntary", ar: "أ. إرادية", correct: true }, { en: "B. Not striated", ar: "ب. غير مخططة", correct: false }, { en: "C. Present in the stomach, intestine, and blood vessels", ar: "ج. موجودة في المعدة والأمعاء والأوعية الدموية", correct: false }, { en: "D. Involuntary", ar: "د. لا إرادية", correct: false }],
+                explain_ar: "العضلات الهيكلية إرادية ومخططة."
+            }, {
+                num: 12,
+                en: "Smooth muscles:",
+                ar: "العضلات الملساء:",
+                options: [{ en: "A. Is voluntary", ar: "أ. إرادية", correct: false }, { en: "B. Striated", ar: "ب. مخططة", correct: false }, { en: "C. Present in wall of blood vessels and intestine", ar: "ج. موجودة في جدار الأوعية الدموية والأمعاء", correct: true }, { en: "D. Attached to bones", ar: "د. متصلة بالعظام", correct: false }],
+                explain_ar: "العضلات الملساء لا إرادية، غير مخططة، وتوجد في جدران الأوعية الدموية والأمعاء."
+            }, {
+                num: 13,
+                en: "Regarding structure of muscles:",
+                ar: "فيما يتعلق بتركيب العضلات:",
+                options: [{ en: "A. Sarcolemma is the cell membrane of the skeletal muscle fiber", ar: "أ. الساركوليما هو الغشاء الخلوي للألياف العضلية الهيكلية", correct: false }, { en: "B. T-tubules are internal extensions of sarcolemma that run transverse to myofibrils", ar: "ب. الأنابيب المستعرضة هي امتدادات داخلية للساركوليما تمر بشكل عرضي على اللييفات العضلية", correct: false }, { en: "C. Sarcoplasmic Reticulum (SR) is endoplasmic reticulum of the muscle", ar: "ج. الشبكة الساركوبلازمية (SR) هي الشبكة الإندوبلازمية للعضلة", correct: false }, { en: "D. All of the above", ar: "د. جميع ما سبق", correct: true }],
+                explain_ar: "جميع العبارات صحيحة: الساركوليما، الأنابيب المستعرضة، والشبكة الساركوبلازمية."
+            }, {
+                num: 14,
+                en: "Sarcomere:",
+                ar: "الساركومير:",
+                options: [{ en: "A. Is the structural unit of the myofibrils", ar: "أ. هي الوحدة التركيبية لللييفات العضلية", correct: false }, { en: "B. Is the portion between two Z lines", ar: "ب. هو الجزء بين خطين Z", correct: false }, { en: "C. It has light areas (A band) and dark areas (I band)", ar: "ج. يحتوي على مناطق مضيئة (شريط A) ومناطق داكنة (شريط I)", correct: false }, { en: "D. A and B", ar: "د. أ و ب", correct: true }],
+                explain_ar: "الساركومير هو الوحدة التركيبية لللييفات العضلية بين خطين Z، وله أشرطة A (داكنة) وI (فاتحة)."
+            }, {
+                num: 15,
+                en: "Regarding muscle contraction:",
+                ar: "فيما يتعلق بتقلص العضلات:",
+                options: [{ en: "A. When muscle is stimulated, intracellular Na levels greatly increase.", ar: "أ. عند تحفيز العضلة، مستويات الصوديوم داخل الخلايا تزيد بشكل كبير.", correct: false }, { en: "B. Ca2+ binds to actin filament allowing the sliding of actin over myosin", ar: "ب. Ca2+ يرتبط بخيط الأكتين مما يسمح بانزلاق الأكتين فوق الميوزين", correct: true }, { en: "C. The sarcomere lengthens", ar: "ج. الساركومير يطول", correct: false }, { en: "D. None of the above", ar: "د. لا شيء مما سبق", correct: false }],
+                explain_ar: "Ca2+ يرتبط بالتروبونين مما يسمح بانزلاق خيوط الأكتين فوق الميوزين، وتقصير الساركومير."
+            }, {
+                num: 16,
+                en: "The ion responsible for initiation of muscle contraction is:",
+                ar: "الأيون المسؤول عن بدء تقلص العضلات هو:",
+                options: [{ en: "A. Na ions", ar: "أ. أيونات الصوديوم", correct: false }, { en: "B. K ions", ar: "ب. أيونات البوتاسيوم", correct: false }, { en: "C. Ca++ ions", ar: "ج. أيونات الكالسيوم", correct: true }, { en: "D. Mg ions", ar: "د. أيونات المغنيسيوم", correct: false }],
+                explain_ar: "أيونات الكالسيوم Ca2+ هي المسؤولة عن بدء تقلص العضلات."
+            }, {
+                num: 17,
+                en: "The depolarization phase is caused by opening of voltage gated sodium channels.",
+                ar: "طور إزالة الاستقطاب يحدث بسبب فتح قنوات الصوديوم المعتمدة على الجهد.",
+                isTF: true,
+                correct: true,
+                explain_ar: "دخول الصوديوم إلى الخلية عبر قنوات الصوديوم المعتمدة على الجهد يسبب إزالة الاستقطاب."
+            }, {
+                num: 18,
+                en: "Leaky channels are always open and have no gate.",
+                ar: "القنوات المتسربة مفتوحة دائمًا وليس لها بوابة.",
+                isTF: true,
+                correct: true,
+                explain_ar: "القنوات المتسربة (leaky channels) مفتوحة باستمرار."
+            }, {
+                num: 19,
+                en: "Cardiac muscle is involuntary, not striated.",
+                ar: "عضلة القلب لا إرادية، غير مخططة.",
+                isTF: true,
+                correct: false,
+                explain_ar: "عضلة القلب لا إرادية ولكنها مخططة (وليس غير مخططة)."
+            }, {
+                num: 20,
+                en: "Smooth muscles is involuntary, non-striated muscle of the stomach, intestine, and blood vessels.",
+                ar: "العضلات الملساء لا إرادية، غير مخططة، عضلة المعدة والأمعاء والأوعية الدموية.",
+                isTF: true,
+                correct: true,
+                explain_ar: "العضلات الملساء لا إرادية وغير مخططة."
+            }, {
+                num: 21,
+                en: "Sarcolemma is the cell membrane of the skeletal muscle fiber.",
+                ar: "الساركوليما هو الغشاء الخلوي للألياف العضلية الهيكلية.",
+                isTF: true,
+                correct: true,
+                explain_ar: "الساركوليما هو الغشاء الخلوي للعضلة الهيكلية."
+            }, {
+                num: 22,
+                en: "T-tubules are internal extensions of sarcolemma that run transverse to myofibrils.",
+                ar: "الأنابيب المستعرضة هي امتدادات داخلية للساركوليما تمر بشكل عرضي على اللييفات العضلية.",
+                isTF: true,
+                correct: true,
+                explain_ar: "الأنابيب المستعرضة (T-tubules) هي امتدادات للساركوليما."
+            }, {
+                num: 23,
+                en: "Sarcoplasmic Reticulum is Golgi apparatus of the muscle.",
+                ar: "الشبكة الساركوبلازمية هي جهاز جولجي للعضلة.",
+                isTF: true,
+                correct: false,
+                explain_ar: "الشبكة الساركوبلازمية هي الشبكة الإندوبلازمية وليست جهاز جولجي."
+            }, {
+                num: 24,
+                en: "Sarcomere is the structural unit of the myofibrils which is area between 2 z lines.",
+                ar: "الساركومير هو الوحدة التركيبية لللييفات العضلية وهي المنطقة بين خطين Z.",
+                isTF: true,
+                correct: true,
+                explain_ar: "الساركومير هو الوحدة التركيبية الأساسية لللييفات العضلية."
+            }, {
+                num: 25,
+                en: "Sarcomere has light areas (A band) and dark areas (I band).",
+                ar: "الساركومير يحتوي على مناطق مضيئة (شريط A) ومناطق داكنة (شريط I).",
+                isTF: true,
+                correct: false,
+                explain_ar: "شريط A داكن وشريط I فاتح، وليس العكس."
+            }]
+        }, {
+            name: "الجهاز الهضمي Digestive System",
+            nameEn: "Digestive System",
+            sectionTotal: 24,
+            questions: [{
+                num: 1,
+                en: "Stomach:",
+                ar: "المعدة:",
+                options: [{ en: "A. Is a muscular organ that store and mixes food", ar: "أ. هي عضو عضلي يخزن ويخلط الطعام", correct: false }, { en: "B. Containing hydrochloric acid and pepsin", ar: "ب. تحتوي على حمض الهيدروكلوريك والبيبسين", correct: false }, { en: "C. It secretes mucous and intrinsic factor that help absorption of vitamin B12", ar: "ج. تفرز المخاط والعامل الجوهري الذي يساعد في امتصاص فيتامين B12", correct: false }, { en: "D. All of the above", ar: "د. جميع ما سبق", correct: true }],
+                explain_ar: "المعدة تخزن وتخلط الطعام، تحتوي على HCl والبيبسين، وتفرز العامل الجوهري لامتصاص B12."
+            }, {
+                num: 2,
+                en: "All of the following about Liver functions is true except:",
+                ar: "جميع ما يلي عن وظائف الكبد صحيح ما عدا:",
+                options: [{ en: "A. It produces bile (which emulsifies fats)", ar: "أ. ينتج الصفراء (التي تستحلب الدهون)", correct: false }, { en: "B. Responsible for blood sugar homeostasis, detoxication, and lipogenesis.", ar: "ب. مسؤول عن توازن سكر الدم، وإزالة السموم، وتكوين الدهون.", correct: false }, { en: "C. Stores and concentrates bile", ar: "ج. يخزن ويركز الصفراء", correct: true }, { en: "D. Is a factory of plasma protein", ar: "د. هو مصنع لبروتينات البلازما", correct: false }],
+                explain_ar: "المرارة هي التي تخزن وتركز الصفراء، وليس الكبد. الكبد ينتج الصفراء."
+            }, {
+                num: 3,
+                en: "Enzymes responsible for Carbohydrate digestion includes all of the following except:",
+                ar: "الإنزيمات المسؤولة عن هضم الكربوهيدرات تشمل جميع ما يلي ما عدا:",
+                options: [{ en: "A. Salivary amylase", ar: "أ. الأميليز اللعابي", correct: false }, { en: "B. Pancreatic amylase", ar: "ب. الأميليز البنكرياسي", correct: false }, { en: "C. Lipase", ar: "ج. الليباز", correct: true }, { en: "D. Maltase, sucrose, lactase in small intestine", ar: "د. المالتاز والسكروز واللاكتاز في الأمعاء الدقيقة", correct: false }],
+                explain_ar: "الليباز هو إنزيم هضم الدهون، وليس الكربوهيدرات."
+            }, {
+                num: 4,
+                en: "All of the following are enzymes necessary for Protein digestion except:",
+                ar: "جميع ما يلي من الإنزيمات الضرورية لهضم البروتين ما عدا:",
+                options: [{ en: "A. Pepsin", ar: "أ. البيبسين", correct: false }, { en: "B. Trypsin", ar: "ب. التربسين", correct: false }, { en: "C. Peptidase", ar: "ج. الببتيداز", correct: false }, { en: "D. Amylase", ar: "د. الأميليز", correct: true }],
+                explain_ar: "الأميليز هو إنزيم هضم الكربوهيدرات، وليس البروتين."
+            }, {
+                num: 5,
+                en: "Lipase enzyme responsible for fat digestion is secreted mainly from:",
+                ar: "إنزيم الليباز المسؤول عن هضم الدهون يُفرز بشكل رئيسي من:",
+                options: [{ en: "A. Pancreas", ar: "أ. البنكرياس", correct: false }, { en: "B. Small intestine", ar: "ب. الأمعاء الدقيقة", correct: false }, { en: "C. Stomach", ar: "ج. المعدة", correct: false }, { en: "D. A and B", ar: "د. أ و ب", correct: true }],
+                explain_ar: "الليباز يُفرز من البنكرياس والأمعاء الدقيقة."
+            }, {
+                num: 6,
+                en: "Pepsin:",
+                ar: "البيبسين:",
+                options: [{ en: "A. Is secreted by small intestine", ar: "أ. يُفرز من الأمعاء الدقيقة", correct: false }, { en: "B. As inactive form pepsinogen that is activated by gastric HCl.", ar: "ب. على شكل غير نشط بيبسينوجين يُنشط بواسطة HCl المعدي.", correct: true }, { en: "C. Digests fat", ar: "ج. يهضم الدهون", correct: false }, { en: "D. None of the above", ar: "د. لا شيء مما سبق", correct: false }],
+                explain_ar: "البيبسين يُفرز كبيبسينوجين غير نشط وينشط بواسطة حمض المعدة HCl."
+            }, {
+                num: 7,
+                en: "Regarding fat digestion:",
+                ar: "فيما يتعلق بهضم الدهون:",
+                options: [{ en: "A. Bile emulsifies fats, breaking them into smaller droplets", ar: "أ. الصفراء تستحلب الدهون، وتقسيمها إلى قطرات أصغر", correct: true }, { en: "B. Amylase enzyme digests fat", ar: "ب. إنزيم الأميليز يهضم الدهون", correct: false }, { en: "C. Pepsin and trypsin enzymes digests fat", ar: "ج. إنزيمات البيبسين والتربسين تهضم الدهون", correct: false }, { en: "D. None of the above", ar: "د. لا شيء مما سبق", correct: false }],
+                explain_ar: "الصفراء تستحلب الدهون (تكسرها إلى قطرات صغيرة) لتسهيل عمل الليباز."
+            }, {
+                num: 8,
+                en: "The Peristaltic reflex of GIT includes:",
+                ar: "منعكس الحركة الدودية في الجهاز الهضمي يشمل:",
+                options: [{ en: "A. A series of coordinated muscle contractions.", ar: "أ. سلسلة من الانقباضات العضلية المنسقة.", correct: false }, { en: "B. The reflex is initiated by constriction before the food bolus and relaxation after", ar: "ب. يبدأ المنعكس بانقباض قبل كتلة الطعام واسترخاء بعدها", correct: false }, { en: "C. It that propel swallowed food and liquid", ar: "ج. يدفع الطعام والسائل المبتلع", correct: false }, { en: "D. All of the above", ar: "د. جميع ما سبق", correct: true }],
+                explain_ar: "الحركة الدودية هي سلسلة من الانقباضات المنسقة التي تدفع الطعام عبر الجهاز الهضمي."
+            }, {
+                num: 9,
+                en: "In swallowing reflex:",
+                ar: "في منعكس البلع:",
+                options: [{ en: "A. Oral phase is involuntary", ar: "أ. المرحلة الفموية لا إرادية", correct: false }, { en: "B. Pharyngeal phase is involuntary", ar: "ب. المرحلة البلعومية لا إرادية", correct: true }, { en: "C. Oesophageal phase is voluntary", ar: "ج. المرحلة المريئية إرادية", correct: false }, { en: "D. All of the above", ar: "د. جميع ما سبق", correct: false }],
+                explain_ar: "المرحلة البلعومية والمريئية لا إرادية، بينما المرحلة الفموية إرادية."
+            }, {
+                num: 10,
+                en: "During swallowing, all of the following events occur except:",
+                ar: "أثناء البلع، جميع الأحداث التالية تحدث ما عدا:",
+                options: [{ en: "A. Nasopharynx is closed by the soft palate, preventing regurgitation of food into the nasal cavities", ar: "أ. يُغلق البلعوم الأنفي بواسطة الحنك الرخو، لمنع ارتجاع الطعام إلى التجاويف الأنفية", correct: false }, { en: "B. Breathing is stimulated for the duration of the pharyngeal phase", ar: "ب. يتم تحفيز التنفس طوال المرحلة البلعومية", correct: true }, { en: "C. Laryngeal opening is closed by depression of the epiglottis and approximation of the vocal cords", ar: "ج. يُغلق فتحة الحنجرة بانخفاض لسان المزمار وتقريب الحبال الصوتية", correct: false }, { en: "D. Peristaltic wave begins in the pharynx to propel the food into the esophagus", ar: "د. تبدأ موجة الحركة الدودية في البلعوم لدفع الطعام إلى المريء", correct: false }],
+                explain_ar: "أثناء البلع، يتم تثبيط التنفس وليس تحفيزه، لحماية مجرى الهواء."
+            }, {
+                num: 11,
+                en: "About defecation reflex:",
+                ar: "فيما يتعلق بمنعكس التبرز:",
+                options: [{ en: "A. Feces moves into the rectum distending it and inhibiting the stretch receptors.", ar: "أ. يتحرك البراز إلى المستقيم مما يوسعه ويثبط المستقبلات التمددية.", correct: false }, { en: "B. It is Spinal reflex", ar: "ب. هو منعكس نخاعي", correct: true }, { en: "C. Is initiated to relax the wall and contract the internal anal sphincter.", ar: "ج. يبدأ ليريح الجدار وينقبض العضلة العاصرة الشرجية الداخلية.", correct: false }, { en: "D. If it is inconvenient strong contraction of external anal sphincter Prevent defecation.", ar: "د. إذا كان غير مناسب، الانقباض القوي للعضلة العاصرة الشرجية الخارجية يمنع التبرز.", correct: false }],
+                explain_ar: "منعكس التبرز هو منعكس نخاعي (spinal reflex)."
+            }, {
+                num: 12,
+                en: "During defecation:",
+                ar: "أثناء التبرز:",
+                options: [{ en: "A. Relaxation the colon wall and contract the internal anal sphincter occur", ar: "أ. يحدث استرخاء جدار القولون وانقباض العاصرة الداخلية", correct: false }, { en: "B. Contraction of the wall and contract the internal anal sphincter occur", ar: "ب. يحدث انقباض الجدار وانقباض العاصرة الداخلية", correct: false }, { en: "C. Contraction of the colon wall and relaxation of the internal anal sphincter occur", ar: "ج. يحدث انقباض جدار القولون واسترخاء العاصرة الشرجية الداخلية", correct: true }, { en: "D. Contraction of external anal sphincter occur if convenient", ar: "د. يحدث انقباض العاصرة الخارجية إذا كان مناسبًا", correct: false }],
+                explain_ar: "أثناء التبرز، ينقبض جدار القولون وتسترخي العاصرة الداخلية لخروج البراز."
+            }, {
+                num: 13,
+                en: "Causes of reflex vomiting includes all of the following except:",
+                ar: "أسباب التقيؤ المنعكس تشمل جميع ما يلي ما عدا:",
+                options: [{ en: "A. Tickling the back of the throat (gag reflex)", ar: "أ. دغدغة مؤخرة الحلق (منعكس التهوع)", correct: false }, { en: "B. Stimulation of the vestibular apparatus as during ear", ar: "ب. تحفيز الجهاز الدهليزي كما في أمراض الأذن", correct: false }, { en: "C. Drugs as tartar emetic (anti-Bilharzial) or emetine that stimulate chemoreceptor trigger zone", ar: "ج. الأدوية مثل مقيئ التارتار أو الإميتين التي تحفز منطقة الزناد الكيميائية", correct: false }, { en: "D. Painful stimuli in the genital system or due to renal, biliary, or intestinal colic", ar: "د. المنبهات المؤلمة في الجهاز التناسلي أو المغص الكلوي والصفراوي والمعوي", correct: true }],
+                explain_ar: "المنبهات المؤلمة في الجهاز التناسلي أو المغص الكلوي والصفراوي تسبب التقيؤ المنعكس (وهذا هو الاستثناء الصحيح)."
+            }, {
+                num: 14,
+                en: "Effects of excess vomiting includes all of the following except:",
+                ar: "تأثيرات التقيؤ المفرط تشمل جميع ما يلي ما عدا:",
+                options: [{ en: "A. Metabolic acidosis due to loss of HCL", ar: "أ. الحماض الاستقلابي بسبب فقدان HCL", correct: true }, { en: "B. Dehydration due to loss of water", ar: "ب. الجفاف بسبب فقدان الماء", correct: false }, { en: "C. Loss of K+", ar: "ج. فقدان البوتاسيوم", correct: false }, { en: "D. All of the above", ar: "د. جميع ما سبق", correct: false }],
+                explain_ar: "فقدان HCL يسبب قلاء استقلابي وليس حماض. الجفاف وفقدان البوتاسيوم صحيحان."
+            }, {
+                num: 15,
+                en: "Stomach secretes HCO3-, pepsin, mucous and intrinsic factor that help absorption of vitamin B12.",
+                ar: "المعدة تفرز HCO3-، البيبسين، المخاط والعامل الجوهري الذي يساعد في امتصاص فيتامين B12.",
+                isTF: true,
+                correct: false,
+                explain_ar: "المعدة لا تفرز HCO3- (تفرز حمض HCl وليس بيكربونات)."
+            }, {
+                num: 16,
+                en: "Pepsin is secreted as inactive form pepsinogen that is activated by gastric HCl.",
+                ar: "البيبسين يُفرز على شكل بيبسينوجين غير نشط يُنشط بواسطة HCl المعدي.",
+                isTF: true,
+                correct: true,
+                explain_ar: "البيبسينوجين يُنشط إلى بيبسين بواسطة حمض المعدة."
+            }, {
+                num: 17,
+                en: "Salivary amylase digests carbohydrate into maltose.",
+                ar: "الأميلاز اللعابي يهضم الكربوهيدرات إلى مالتوز.",
+                isTF: true,
+                correct: true,
+                explain_ar: "الأميلاز اللعابي يبدأ هضم النشا إلى مالتوز."
+            }, {
+                num: 18,
+                en: "Enzymes which digest fat are pepsin, trypsin and chymotrypsin.",
+                ar: "الإنزيمات التي تهضم الدهون هي البيبسين والتربسين والكيموتربسين.",
+                isTF: true,
+                correct: false,
+                explain_ar: "البيبسين والتربسين والكيموتربسين تهضم البروتين، وليس الدهون. الليباز هو إنزيم هضم الدهون."
+            }, {
+                num: 19,
+                en: "Bile salts are necessary for emulsification of fat, converting it to smaller droplets.",
+                ar: "أملاح الصفراء ضرورية لاستحلاب الدهون، وتحويلها إلى قطرات أصغر.",
+                isTF: true,
+                correct: true,
+                explain_ar: "أملاح الصفراء تستحلب الدهون لتسهيل هضمها بواسطة الليباز."
+            }, {
+                num: 20,
+                en: "During swallowing, Nasopharynx is opened by the soft palate, preventing regurgitation of food into the nasal cavities.",
+                ar: "أثناء البلع، يُفتح البلعوم الأنفي بواسطة الحنك الرخو، مما يمنع ارتجاع الطعام إلى التجاويف الأنفية.",
+                isTF: true,
+                correct: false,
+                explain_ar: "الحنك الرخو يُغلق البلعوم الأنفي (وليس يفتحه) لمنع ارتجاع الطعام."
+            }, {
+                num: 21,
+                en: "Breathing is stimulated for the duration of the pharyngeal phase of swallowing.",
+                ar: "يتم تحفيز التنفس طوال المرحلة البلعومية من البلع.",
+                isTF: true,
+                correct: false,
+                explain_ar: "أثناء البلع، يتم تثبيط التنفس لحماية مجرى الهواء."
+            }, {
+                num: 22,
+                en: "Laryngeal opening is closed by depression of the epiglottis and approximation of the vocal cords during swallowing.",
+                ar: "تُغلق فتحة الحنجرة بانخفاض لسان المزمار وتقريب الحبال الصوتية أثناء البلع.",
+                isTF: true,
+                correct: true,
+                explain_ar: "لسان المزمار يغلق فتحة الحنجرة أثناء البلع."
+            }, {
+                num: 23,
+                en: "Reflex vomiting includes Tickling the back of the throat (gag reflex).",
+                ar: "التقيؤ المنعكس يشمل دغدغة مؤخرة الحلق (منعكس التهوع).",
+                isTF: true,
+                correct: true,
+                explain_ar: "دغدغة الحلق تحفز منعكس التهوع الذي قد يؤدي إلى التقيؤ."
+            }, {
+                num: 24,
+                en: "Defecation reflex is spinal reflex.",
+                ar: "منعكس التبرز هو منعكس نخاعي.",
+                isTF: true,
+                correct: true,
+                explain_ar: "منعكس التبرز هو منعكس نخاعي (spinal reflex)."
+            }]
+        }, {
+            name: "الأيض و الحرارة Metabolism & Temperature",
+            nameEn: "Metabolism & Temperature",
+            sectionTotal: 15,
+            questions: [{
+                num: 1,
+                en: "Core temperature:",
+                ar: "درجة الحرارة الأساسية:",
+                options: [{ en: "A. It is the temperature of deep tissues.", ar: "أ. هي درجة حرارة الأنسجة العميقة.", correct: true }, { en: "B. It rises and falls with the temperature of the surrounding.", ar: "ب. ترتفع وتنخفض مع درجة حرارة المحيط.", correct: false }, { en: "C. A and B", ar: "ج. أ و ب", correct: false }, { en: "D. None of the above", ar: "د. لا شيء مما سبق", correct: false }],
+                explain_ar: "درجة الحرارة الأساسية هي درجة حرارة الأنسجة العميقة (مثل القلب والكبد والدماغ) وهي ثابتة نسبيًا."
+            }, {
+                num: 2,
+                en: "The indications for using axillary and rectal temperature include the following except:",
+                ar: "مؤشرات استخدام درجة الحرارة الإبطية والمستقيمية تشمل ما يلي ما عدا:",
+                options: [{ en: "A. Children", ar: "أ. الأطفال", correct: false }, { en: "B. Anesthesia", ar: "ب. التخدير", correct: false }, { en: "C. Adults", ar: "ج. البالغون", correct: true }, { en: "D. Coma", ar: "د. الغيبوبة", correct: false }],
+                explain_ar: "قياس الحرارة الإبطي والمستقيمي يستخدم للأطفال والتخدير والغيبوبة، وليس للبالغين العاديين."
+            }, {
+                num: 3,
+                en: "Skin temperature includes the following:",
+                ar: "درجة حرارة الجلد تشمل ما يلي:",
+                options: [{ en: "A. Is the temperature of deep tissues.", ar: "أ. هي درجة حرارة الأنسجة العميقة.", correct: false }, { en: "B. It rises and falls with the temperature of the surrounding.", ar: "ب. ترتفع وتنخفض مع درجة حرارة المحيط.", correct: true }, { en: "C. It remains exactly constant within the range of 36.5°C to 37.5°C orally.", ar: "ج. تبقى ثابتة تمامًا في نطاق 36.5-37.5 درجة مئوية فمويًا.", correct: false }, { en: "D. All of the above", ar: "د. جميع ما سبق", correct: false }],
+                explain_ar: "درجة حرارة الجلد ترتفع وتنخفض مع درجة حرارة المحيط."
+            }, {
+                num: 4,
+                en: "About sweating:",
+                ar: "فيما يتعلق بالتعرق:",
+                options: [{ en: "A. Is under parasympathetic control", ar: "أ. تحت سيطرة الجهاز نظير الودي", correct: false }, { en: "B. Higher control is by hypothalamic posterior nuclei", ar: "ب. التحكم الأعلى بواسطة النوى الخلفية للهايبوثلاموس", correct: false }, { en: "C. The center for sweat secretion is in the anterior hypothalamus", ar: "ج. مركز إفراز العرق في الهايبوثلاموس الأمامي", correct: true }, { en: "D. None of the above", ar: "د. لا شيء مما سبق", correct: false }],
+                explain_ar: "مركز التعرق يقع في الهايبوثلاموس الأمامي (anterior hypothalamus)."
+            }, {
+                num: 5,
+                en: "Mechanisms to increase heat loss includes the following except:",
+                ar: "آليات زيادة فقدان الحرارة تشمل ما يلي ما عدا:",
+                options: [{ en: "A. Conduction", ar: "أ. التوصيل", correct: false }, { en: "B. Convection", ar: "ب. الحمل", correct: false }, { en: "C. Evaporation", ar: "ج. التبخر", correct: false }, { en: "D. Shivering", ar: "د. الارتعاش", correct: true }],
+                explain_ar: "الارتعاش يزيد إنتاج الحرارة وليس فقدانها."
+            }, {
+                num: 6,
+                en: "Mechanisms to increase heat loss includes the following except:",
+                ar: "آليات زيادة فقدان الحرارة تشمل ما يلي ما عدا:",
+                options: [{ en: "A. Radiation", ar: "أ. الإشعاع", correct: false }, { en: "B. Chemical hormones released as thyroid", ar: "ب. الهرمونات الكيميائية مثل هرمون الغدة الدرقية", correct: true }, { en: "C. Sweating", ar: "ج. التعرق", correct: false }, { en: "D. None of the above", ar: "د. لا شيء مما سبق", correct: false }],
+                explain_ar: "هرمونات الغدة الدرقية تزيد إنتاج الحرارة وليس فقدانها."
+            }, {
+                num: 7,
+                en: "Mechanisms for increasing heat gain include the following except:",
+                ar: "آليات زيادة اكتساب الحرارة تشمل ما يلي ما عدا:",
+                options: [{ en: "A. Walking, doing exercise, intake of food", ar: "أ. المشي، ممارسة الرياضة، تناول الطعام", correct: false }, { en: "B. Shivering: involuntary rhythmic contraction of SKM", ar: "ب. الارتعاش: انقباض إيقاعي لا إرادي للعضلات الهيكلية", correct: false }, { en: "C. Increased secretion of hormones: TRH, TSH, and Thyroxine CRH, ACTH, and cortisol", ar: "ج. زيادة إفراز الهرمونات: TRH، TSH، والثيروكسين، CRH، ACTH، والكورتيزول", correct: false }, { en: "D. Sweating", ar: "د. التعرق", correct: true }],
+                explain_ar: "التعرق يزيد فقدان الحرارة وليس اكتسابها."
+            }, {
+                num: 8,
+                en: "For heat gain:",
+                ar: "لاكتساب الحرارة:",
+                options: [{ en: "A. Increasing sweating", ar: "أ. زيادة التعرق", correct: false }, { en: "B. Inhibition of sweating", ar: "ب. تثبيط التعرق", correct: true }, { en: "C. Radiation of heat increases", ar: "ج. زيادة الإشعاع الحراري", correct: false }, { en: "D. All of the above", ar: "د. جميع ما سبق", correct: false }],
+                explain_ar: "لاكتساب الحرارة، يتم تثبيط التعرق وتقليل الإشعاع الحراري."
+            }, {
+                num: 9,
+                en: "About the center for regulation of body temperature:",
+                ar: "فيما يتعلق بمركز تنظيم درجة حرارة الجسم:",
+                options: [{ en: "A. Center for heat loss is posterior hypothalamic nuclei.", ar: "أ. مركز فقدان الحرارة هو النوى الخلفية للهايبوثلاموس.", correct: false }, { en: "B. Center of heat gain in the posterior hypothalamic nuclei", ar: "ب. مركز اكتساب الحرارة في النوى الخلفية للهايبوثلاموس.", correct: true }, { en: "C. Both heat gain and heat loss controlled by anterior hypothalamus", ar: "ج. كل من اكتساب وفقدان الحرارة يتحكم بهما الهايبوثلاموس الأمامي.", correct: false }, { en: "D. None of the above.", ar: "د. لا شيء مما سبق.", correct: false }],
+                explain_ar: "مركز اكتساب الحرارة في النوى الخلفية للهايبوثلاموس، ومركز فقدان الحرارة في النوى الأمامية."
+            }, {
+                num: 10,
+                en: "About fever, all are true except:",
+                ar: "فيما يتعلق بالحمى، جميع ما يلي صحيح ما عدا:",
+                options: [{ en: "A. It is any elevation of body temperature above 41-43 °C", ar: "أ. هو أي ارتفاع في درجة حرارة الجسم فوق 41-43 درجة مئوية", correct: true }, { en: "B. It is any elevation of body temperature above the normal (37.5°C)", ar: "ب. هو أي ارتفاع في درجة حرارة الجسم فوق الطبيعي (37.5°C)", correct: false }, { en: "C. Causes includes brain injury, sustained exercise, dehydration Bacterial or viral infection", ar: "ج. الأسباب تشمل إصابة الدماغ، التمرين المطول، الجفاف، العدوى البكتيرية أو الفيروسية", correct: false }, { en: "D. It includes release of IL-1", ar: "د. يشمل إطلاق IL-1", correct: false }],
+                explain_ar: "الحمى هي ارتفاع درجة الحرارة فوق 37.5°C (وليس 41-43°C، فهذه درجة حرارة قاتلة)."
+            }, {
+                num: 11,
+                en: "Heat stroke management includes the following except:",
+                ar: "إدارة ضربة الشمس تشمل ما يلي ما عدا:",
+                options: [{ en: "A. Hot baths", ar: "أ. الحمامات الساخنة", correct: true }, { en: "B. Cold blankets and ice packs", ar: "ب. البطانيات الباردة وأكياس الثلج", correct: false }, { en: "C. Iv Fluids", ar: "ج. السوائل الوريدية", correct: false }, { en: "D. Use fans and air conditioner", ar: "د. استخدام المراوح ومكيفات الهواء", correct: false }],
+                explain_ar: "في ضربة الشمس، يجب تبريد المريض وليس تسخينه. الحمامات الساخنة تضر."
+            }, {
+                num: 12,
+                en: "Heat stroke means increase body temperature above:",
+                ar: "ضربة الشمس تعني ارتفاع درجة حرارة الجسم فوق:",
+                options: [{ en: "A. 39-°C", ar: "أ. 39 درجة مئوية", correct: false }, { en: "B. 40°C", ar: "ب. 40 درجة مئوية", correct: false }, { en: "C. 41°C", ar: "ج. 41 درجة مئوية", correct: true }, { en: "D. 44°C", ar: "د. 44 درجة مئوية", correct: false }],
+                explain_ar: "ضربة الشمس تُعرّف بارتفاع درجة الحرارة فوق 41 درجة مئوية."
+            }, {
+                num: 13,
+                en: "Core temperature rises and falls with the temperature of the surrounding.",
+                ar: "درجة الحرارة الأساسية ترتفع وتنخفض مع درجة حرارة المحيط.",
+                isTF: true,
+                correct: false,
+                explain_ar: "درجة الحرارة الأساسية ثابتة نسبيًا (تبقى حول 37°C)، بينما درجة حرارة الجلد تتغير مع المحيط."
+            }, {
+                num: 14,
+                en: "Mechanisms to increase heat loss includes shivering.",
+                ar: "آليات زيادة فقدان الحرارة تشمل الارتعاش.",
+                isTF: true,
+                correct: false,
+                explain_ar: "الارتعاش يزيد إنتاج الحرارة وليس فقدانها."
+            }, {
+                num: 15,
+                en: "Sweating is controlled by posterior hypothalamus.",
+                ar: "التعرق يتحكم به الهايبوثلاموس الخلفي.",
+                isTF: true,
+                correct: false,
+                explain_ar: "مركز التعرق في الهايبوثلاموس الأمامي (anterior) وليس الخلفي."
+            }]
+        }, {
+            name: "الغدد الصماء Endocrine System",
+            nameEn: "Endocrine System",
+            sectionTotal: 50,
+            questions: [{
+                num: 1,
+                en: "Hormones of the anterior pituitary includes all the following except:",
+                ar: "هرمونات الغدة النخامية الأمامية تشمل جميع ما يلي ما عدا:",
+                options: [{ en: "A. Growth hormone", ar: "أ. هرمون النمو", correct: false }, { en: "B. Prolactin", ar: "ب. البرولاكتين", correct: false }, { en: "C. Oxytocin", ar: "ج. الأوكسيتوسين", correct: true }, { en: "D. (FSH) and (LH)", ar: "د. FSH و LH", correct: false }],
+                explain_ar: "الأوكسيتوسين يُفرز من النخامية الخلفية وليس الأمامية."
+            }, {
+                num: 2,
+                en: "The following hormone is synthesized by hypothalamus and released by the posterior pituitary gland:",
+                ar: "الهرمون التالي يتم تصنيعه في الهايبوثلاموس ويُطلق من الغدة النخامية الخلفية:",
+                options: [{ en: "A. Antidiuretic hormone (ADH) / oxytocin", ar: "أ. الهرمون المضاد لإدرار البول (ADH) / الأوكسيتوسين", correct: true }, { en: "B. Growth hormone", ar: "ب. هرمون النمو", correct: false }, { en: "C. FSH and LH", ar: "ج. FSH و LH", correct: false }, { en: "D. ACTH", ar: "د. ACTH", correct: false }],
+                explain_ar: "ADH والأوكسيتوسين يُصنعان في الهايبوثلاموس ويُخزنان ويُطلقان من النخامية الخلفية."
+            }, {
+                num: 3,
+                en: "Regarding the metabolic effects of GH, all are true except:",
+                ar: "فيما يتعلق بالتأثيرات الأيضية لهرمون النمو، جميع ما يلي صحيح ما عدا:",
+                options: [{ en: "A. GH promotes breakdown of protein", ar: "أ. GH يعزز تكسير البروتين", correct: true }, { en: "B. GH enhances utilization of fat", ar: "ب. GH يعزز استخدام الدهون", correct: false }, { en: "C. GH decreases carbohydrate utilization and has diabetogenic effect.", ar: "ج. GH يقلل استخدام الكربوهيدرات وله تأثير سكري.", correct: false }, { en: "D. GH increases insulin secretion", ar: "د. GH يزيد إفراز الأنسولين", correct: false }],
+                explain_ar: "GH يعزز بناء البروتين وليس تكسيره (يحفز تخليق البروتين)."
+            }, {
+                num: 4,
+                en: "GH action:",
+                ar: "تأثير هرمون النمو:",
+                options: [{ en: "A. Are direct effects by binding to receptor", ar: "أ. تأثيرات مباشرة عن طريق الارتباط بالمستقبل", correct: false }, { en: "B. Are indirect effects through enhancing the release somatomedins mainly from the liver.", ar: "ب. تأثيرات غير مباشرة عن طريق تعزيز إفراز السوماتوميدينات من الكبد بشكل رئيسي.", correct: false }, { en: "C. Both A and B", ar: "ج. كل من أ و ب", correct: true }, { en: "D. None of the above", ar: "د. لا شيء مما سبق", correct: false }],
+                explain_ar: "GH له تأثيرات مباشرة (على المستقبلات) وغير مباشرة (عن طريق السوماتوميدينات من الكبد)."
+            }, {
+                num: 5,
+                en: "Deficiency of Growth hormone release before puberty leads to:",
+                ar: "نقص إفراز هرمون النمو قبل البلوغ يؤدي إلى:",
+                options: [{ en: "A. Cretinism", ar: "أ. القماءة", correct: false }, { en: "B. Dwarfism", ar: "ب. القزامة", correct: true }, { en: "C. Gigantism", ar: "ج. العملقة", correct: false }, { en: "D. Acromegaly", ar: "د. ضخامة الأطراف", correct: false }],
+                explain_ar: "نقص GH قبل البلوغ يسبب القزامة (dwarfism)."
+            }, {
+                num: 6,
+                en: "Gigantism occur:",
+                ar: "العملقة تحدث:",
+                options: [{ en: "A. Increased GH before puberty", ar: "أ. زيادة GH قبل البلوغ", correct: true }, { en: "B. Increased GH after puberty", ar: "ب. زيادة GH بعد البلوغ", correct: false }, { en: "C. Both A and B", ar: "ج. كل من أ و ب", correct: false }, { en: "D. None of the above", ar: "د. لا شيء مما سبق", correct: false }],
+                explain_ar: "العملقة تحدث نتيجة زيادة GH قبل البلوغ (قبل التحام الصفائح المشاشية)."
+            }, {
+                num: 7,
+                en: "Acromegaly occur when:",
+                ar: "ضخامة الأطراف تحدث عندما:",
+                options: [{ en: "A. Increased GH before puberty", ar: "أ. زيادة GH قبل البلوغ", correct: false }, { en: "B. Increased GH after puberty", ar: "ب. زيادة GH بعد البلوغ", correct: true }, { en: "C. Both A and B", ar: "ج. كل من أ و ب", correct: false }, { en: "D. None of the above", ar: "د. لا شيء مما سبق", correct: false }],
+                explain_ar: "ضخامة الأطراف تحدث نتيجة زيادة GH بعد البلوغ (بعد التحام الصفائح المشاشية)."
+            }, {
+                num: 8,
+                en: "Which hormone is responsible for decreased excretion of water by the kidney and producing very concentrated urine:",
+                ar: "أي هرمون مسؤول عن تقليل إخراج الماء عن طريق الكلى وإنتاج بول مركز جدًا:",
+                options: [{ en: "A. Oxytocin", ar: "أ. الأوكسيتوسين", correct: false }, { en: "B. ADH", ar: "ب. الهرمون المضاد لإدرار البول (ADH)", correct: true }, { en: "C. GH", ar: "ج. هرمون النمو", correct: false }, { en: "D. FSH and LH", ar: "د. FSH و LH", correct: false }],
+                explain_ar: "ADH يزيد إعادة امتصاص الماء في الكلى، مما يقلل إخراج الماء وينتج بولًا مركزًا."
+            }, {
+                num: 9,
+                en: "Functions of oxytocin:",
+                ar: "وظائف الأوكسيتوسين:",
+                options: [{ en: "A. Causes contraction of myoepithelial cells of mammary leads to milk ejection", ar: "أ. يسبب انقباض الخلايا العضلية الظهارية للغدد الثديية مما يؤدي إلى إفراز الحليب", correct: false }, { en: "B. Causes contraction of the pregnant uterus and is responsible for delivery of the baby.", ar: "ب. يسبب انقباض الرحم الحامل وهو مسؤول عن ولادة الجنين.", correct: false }, { en: "C. Its release during puerperium help the involution of the uterus", ar: "ج. إفرازه أثناء النفاس يساعد في ارتداد الرحم", correct: false }, { en: "D. All of the above", ar: "د. جميع ما سبق", correct: true }],
+                explain_ar: "الأوكسيتوسين مسؤول عن إفراز الحليب، انقباض الرحم أثناء الولادة، وارتداد الرحم بعد الولادة."
+            }, {
+                num: 10,
+                en: "Regarding the functions of thyroid hormone, all are true except:",
+                ar: "فيما يتعلق بوظائف هرمون الغدة الدرقية، جميع ما يلي صحيح ما عدا:",
+                options: [{ en: "A. It increases O2 consumption", ar: "أ. يزيد استهلاك الأكسجين", correct: false }, { en: "B. BMR is increased in all tissues", ar: "ب. يزيد معدل الأيض الأساسي في جميع الأنسجة", correct: false }, { en: "C. BMR is decreased in the tissues", ar: "ج. يقل معدل الأيض الأساسي في الأنسجة", correct: true }, { en: "D. It increase in heat production", ar: "د. يزيد إنتاج الحرارة", correct: false }],
+                explain_ar: "هرمون الغدة الدرقية يزيد BMR في جميع الأنسجة وليس يقلله."
+            }, {
+                num: 11,
+                en: "Regarding the functions of thyroid hormone, all are true except:",
+                ar: "فيما يتعلق بوظائف هرمون الغدة الدرقية، جميع ما يلي صحيح ما عدا:",
+                options: [{ en: "A. It increases COP and", ar: "أ. يزيد الناتج القلبي", correct: false }, { en: "B. It increases ventilation rate", ar: "ب. يزيد معدل التهوية", correct: false }, { en: "C. It decreases heart rate", ar: "ج. يقلل معدل ضربات القلب", correct: true }, { en: "D. None of the above", ar: "د. لا شيء مما سبق", correct: false }],
+                explain_ar: "هرمون الغدة الدرقية يزيد معدل ضربات القلب (وليس يقلله) ويزيد الناتج القلبي والتهوية."
+            }, {
+                num: 12,
+                en: "In Cretinism, all are true except:",
+                ar: "في القماءة (Cretinism)، جميع ما يلي صحيح ما عدا:",
+                options: [{ en: "A. Babies is dwarf", ar: "أ. الطفل قزم", correct: false }, { en: "B. Normal stature occur", ar: "ب. يحدث قوام طبيعي", correct: true }, { en: "C. Mental retardation occur", ar: "ج. يحدث تخلف عقلي", correct: false }, { en: "D. Hypogonadism", ar: "د. نقص الغدد التناسلية", correct: false }],
+                explain_ar: "القماءة (Cretinism) تسبب قزامة وتخلف عقلي ونقص غدد تناسلية، وليس قوامًا طبيعيًا."
+            }, {
+                num: 13,
+                en: "Deficiency of thyroid hormone after puberty gives:",
+                ar: "نقص هرمون الغدة الدرقية بعد البلوغ يعطي:",
+                options: [{ en: "A. Myxedema", ar: "أ. الوذمة المخاطية (Myxedema)", correct: true }, { en: "B. Graves' disease", ar: "ب. مرض جريفز", correct: false }, { en: "C. Cretinism", ar: "ج. القماءة", correct: false }, { en: "D. Dwarfism", ar: "د. القزامة", correct: false }],
+                explain_ar: "نقص هرمون الغدة الدرقية بعد البلوغ يسبب الوذمة المخاطية (Myxedema)."
+            }, {
+                num: 14,
+                en: "Main function of parathyroid hormone (PTH) is to:",
+                ar: "الوظيفة الرئيسية لهرمون الغدة الجار درقية (PTH) هي:",
+                options: [{ en: "A. Release both Ca+2 and P from the bone minerals to the ECF", ar: "أ. إطلاق كل من Ca+2 و P من معادن العظام إلى السائل خارج الخلوي", correct: true }, { en: "B. Deposit Ca++ and P in bone", ar: "ب. ترسيب Ca++ و P في العظم", correct: false }, { en: "C. Both A and B", ar: "ج. كل من أ و ب", correct: false }, { en: "D. None of the above", ar: "د. لا شيء مما سبق", correct: false }],
+                explain_ar: "PTH يطلق Ca+2 و P من العظام إلى السائل خارج الخلوي لزيادة مستوى الكالسيوم في الدم."
+            }, {
+                num: 15,
+                en: "Actions of PTH includes all the following except:",
+                ar: "تأثيرات PTH تشمل جميع ما يلي ما عدا:",
+                options: [{ en: "A. Acts on bone to release both Ca+2 and P from the bone minerals to the ECF", ar: "أ. يعمل على العظم لإطلاق Ca+2 و P من معادن العظام إلى السائل خارج الخلوي", correct: false }, { en: "B. Acts on kidney to reabsorb Ca+2 and elimination of P", ar: "ب. يعمل على الكلى لإعادة امتصاص Ca+2 وإزالة P", correct: false }, { en: "C. Acts on bone to deposit Ca ++ and P", ar: "ج. يعمل على العظم لترسيب Ca++ و P", correct: true }, { en: "D. Acts on intestine stimulates active transport of Ca+2 and P by activating vitamin D.", ar: "د. يعمل على الأمعاء لتحفيز النقل النشط لـ Ca+2 و P عن طريق تنشيط فيتامين D.", correct: false }],
+                explain_ar: "PTH يطلق الكالسيوم والفوسفات من العظم (لا يرسّبهما)."
+            }, {
+                num: 16,
+                en: "Main aim of parathyroid hormone (PTH) is:",
+                ar: "الهدف الرئيسي لهرمون الغدة الجار درقية (PTH) هو:",
+                options: [{ en: "A. Increase serum Ca++ level", ar: "أ. زيادة مستوى Ca++ في المصل", correct: true }, { en: "B. Decrease serum Ca++ level", ar: "ب. تقليل مستوى Ca++ في المصل", correct: false }, { en: "C. No effect on serum Ca++ level", ar: "ج. لا تأثير على مستوى Ca++ في المصل", correct: false }, { en: "D. None of the above", ar: "د. لا شيء مما سبق", correct: false }],
+                explain_ar: "الهدف الرئيسي لـ PTH هو زيادة مستوى الكالسيوم في الدم."
+            }, {
+                num: 17,
+                en: "All the following hormones regulate serum Ca ++ level except:",
+                ar: "جميع الهرمونات التالية تنظم مستوى Ca++ في المصل ما عدا:",
+                options: [{ en: "A. PTH", ar: "أ. PTH", correct: false }, { en: "B. Calcitonin", ar: "ب. الكالسيتونين", correct: false }, { en: "C. ADH", ar: "ج. ADH", correct: true }, { en: "D. VITAMIN D", ar: "د. فيتامين D", correct: false }],
+                explain_ar: "ADH لا يشارك في تنظيم مستوى الكالسيوم في الدم (ينظم الماء)."
+            }, {
+                num: 18,
+                en: "The adrenal cortex release all the following hormones except:",
+                ar: "قشرة الغدة الكظرية تطلق جميع الهرمونات التالية ما عدا:",
+                options: [{ en: "A. Mineralocorticoid (mainly aldosterone)", ar: "أ. القشرانيات المعدنية (الألدوستيرون بشكل رئيسي)", correct: false }, { en: "B. Glucocorticoid (mainly cortisol)", ar: "ب. القشرانيات السكرية (الكورتيزول بشكل رئيسي)", correct: false }, { en: "C. Prolactin", ar: "ج. البرولاكتين", correct: true }, { en: "D. Adrenal androgens and minimal estrogen", ar: "د. الأندروجينات الكظرية والقليل من الإستروجين", correct: false }],
+                explain_ar: "البرولاكتين يُفرز من النخامية الأمامية وليس من قشرة الكظر."
+            }, {
+                num: 19,
+                en: "Functions of cortisol includes:",
+                ar: "وظائف الكورتيزول تشمل:",
+                options: [{ en: "A. Anti-inflammatory Effect", ar: "أ. تأثير مضاد للالتهاب", correct: false }, { en: "B. Anti-allergic Effect", ar: "ب. تأثير مضاد للحساسية", correct: false }, { en: "C. Anti-stress action", ar: "ج. تأثير مضاد للضغط", correct: false }, { en: "D. All of the above", ar: "د. جميع ما سبق", correct: true }],
+                explain_ar: "الكورتيزول له تأثيرات مضادة للالتهاب والحساسية والضغط."
+            }, {
+                num: 20,
+                en: "Antistress Action of Cortisol includes the following Except:",
+                ar: "تأثير الكورتيزول المضاد للضغط يشمل ما يلي ما عدا:",
+                options: [{ en: "A. Provides stressed tissues with both glucose and protein", ar: "أ. يوفر للأنسجة المتوترة كلاً من الجلوكوز والبروتين", correct: false }, { en: "B. Decrease the use of glucose and proteins by non-stressed tissues.", ar: "ب. يقلل استخدام الجلوكوز والبروتين من قبل الأنسجة غير المتوترة.", correct: false }, { en: "C. Cortisol decreases plasma levels of glucose, amino acids and proteins", ar: "ج. الكورتيزول يقلل مستويات الجلوكوز والأحماض الأمينية والبروتين في البلازما", correct: true }, { en: "D. Cortisol increases plasma levels of glucose, amino acids and proteins", ar: "د. الكورتيزول يزيد مستويات الجلوكوز والأحماض الأمينية والبروتين في البلازما", correct: false }],
+                explain_ar: "الكورتيزول يزيد مستويات الجلوكوز والأحماض الأمينية والبروتين في البلازما، ولا يقللها."
+            }, {
+                num: 21,
+                en: "Main function of aldosterone:",
+                ar: "الوظيفة الرئيسية للألدوستيرون:",
+                options: [{ en: "A. It causes increase sodium reabsorption in exchange for potassium and hydrogen ions", ar: "أ. يسبب زيادة إعادة امتصاص الصوديوم مقابل البوتاسيوم وأيونات الهيدروجين", correct: true }, { en: "B. It increases excretion of both sodium, potassium and hydrogen", ar: "ب. يزيد إفراز كل من الصوديوم والبوتاسيوم والهيدروجين", correct: false }, { en: "C. It increases reabsorption of both sodium and potassium and hydrogen", ar: "ج. يزيد إعادة امتصاص كل من الصوديوم والبوتاسيوم والهيدروجين", correct: false }, { en: "D. None of the above", ar: "د. لا شيء مما سبق", correct: false }],
+                explain_ar: "الألدوستيرون يزيد إعادة امتصاص الصوديوم ويطرح البوتاسيوم والهيدروجين."
+            }, {
+                num: 22,
+                en: "The major pancreatic hormones Insulin is produced:",
+                ar: "هرمون الأنسولين البنكرياسي الرئيسي يُنتج:",
+                options: [{ en: "A. By the beta cells (60%).", ar: "أ. بواسطة خلايا بيتا (60%).", correct: true }, { en: "B. Produced by alpha cells (25%).", ar: "ب. يُنتج بواسطة خلايا ألفا (25%).", correct: false }, { en: "C. By delta cells (5-10%).", ar: "ج. بواسطة خلايا دلتا (5-10%).", correct: false }, { en: "D. Produced by F cells (5%).", ar: "د. يُنتج بواسطة خلايا F (5%).", correct: false }],
+                explain_ar: "الأنسولين يُنتج من خلايا بيتا في جزر لانغرهانس (حوالي 60%)."
+            }, {
+                num: 23,
+                en: "Effects of Insulin includes:",
+                ar: "تأثيرات الأنسولين تشمل:",
+                options: [{ en: "A. Promotes uptake of glucose in skeletal muscle and adipose tissue to decrease blood glucose level", ar: "أ. يعزز امتصاص الجلوكوز في العضلات الهيكلية والأنسجة الدهنية لتقليل مستوى الجلوكوز في الدم", correct: false }, { en: "B. It promotes conversion of excess glucose into fatty acids (lipogenesis)", ar: "ب. يعزز تحويل الجلوكوز الزائد إلى أحماض دهنية (تكوين الدهون)", correct: false }, { en: "C. It stimulates protein synthesis", ar: "ج. يحفز تخليق البروتين", correct: false }, { en: "D. All of the above", ar: "د. جميع ما سبق", correct: true }],
+                explain_ar: "الأنسولين يخفض سكر الدم، يعزز تكوين الدهون، ويحفز تخليق البروتين."
+            }, {
+                num: 24,
+                en: "The physiologic Actions of Glucagon include:",
+                ar: "التأثيرات الفسيولوجية للجلوكاجون تشمل:",
+                options: [{ en: "A. It stimulates glycogen breakdown", ar: "أ. يحفز تكسير الجليكوجين", correct: false }, { en: "B. It increases blood glucose level", ar: "ب. يزيد مستوى الجلوكوز في الدم", correct: true }, { en: "C. It decreases blood glucose level", ar: "ج. يقلل مستوى الجلوكوز في الدم", correct: false }, { en: "D. None of the above", ar: "د. لا شيء مما سبق", correct: false }],
+                explain_ar: "الجلوكاجون يحفز تكسير الجليكوجين ويزيد سكر الدم."
+            }, {
+                num: 25,
+                en: "Functions testosterone includes the following except:",
+                ar: "وظائف التستوستيرون تشمل ما يلي ما عدا:",
+                options: [{ en: "A. Male sexual organs: It stimulates penile growth, formation of Sperms, prostate growth, and function.", ar: "أ. الأعضاء التناسلية الذكرية: يحفز نمو القضيب، تكوين الحيوانات المنوية، نمو البروستاتا ووظيفتها.", correct: false }, { en: "B. Muscle: It decreases strength and mass.", ar: "ب. العضلات: يقلل القوة والكتلة.", correct: true }, { en: "C. Skin: It makes the skin thick, rough, appearance of facial hair, baldness, and acne.", ar: "ج. الجلد: يجعل الجلد سميكًا، خشنًا، ظهور شعر الوجه، الصلع، وحب الشباب.", correct: false }, { en: "D. Bone: It accelerates linear growth, closure of epiphysis", ar: "د. العظام: يسرع النمو الطولي، إغلاق الصفائح المشاشية", correct: false }],
+                explain_ar: "التستوستيرون يزيد قوة وكتلة العضلات وليس يقللها."
+            }, {
+                num: 26,
+                en: "Estrogen effects includes the following except:",
+                ar: "تأثيرات الإستروجين تشمل ما يلي ما عدا:",
+                options: [{ en: "A. Promote development of the duct system, nipple, areola, stromal tissue, and deposition of fat.", ar: "أ. يعزز تطور النظام القنوي، الحلمة، الهالة، النسيج اللحمي، وترسب الدهون.", correct: false }, { en: "B. Promotes the development of Proliferative changes of endometrium", ar: "ب. يعزز تطور التغيرات التكاثرية في بطانة الرحم", correct: false }, { en: "C. Stimulates the contraction of the myometrium", ar: "ج. يحفز انقباض عضلة الرحم", correct: false }, { en: "D. Promotes Secretory changes of endometrium", ar: "د. يعزز التغيرات الإفرازية في بطانة الرحم", correct: true }],
+                explain_ar: "التغيرات الإفرازية في بطانة الرحم يسببها البروجستيرون وليس الإستروجين."
+            }, {
+                num: 27,
+                en: "Sources of progesterone secretion is:",
+                ar: "مصادر إفراز البروجستيرون هي:",
+                options: [{ en: "A. Corpus luteum in non-pregnant females.", ar: "أ. الجسم الأصفر في الإناث غير الحوامل.", correct: false }, { en: "B. Placenta in pregnant females.", ar: "ب. المشيمة في الإناث الحوامل.", correct: false }, { en: "C. Both A and B", ar: "ج. كل من أ و ب", correct: true }, { en: "D. None of the above", ar: "د. لا شيء مما سبق", correct: false }],
+                explain_ar: "البروجستيرون يُفرز من الجسم الأصفر في غير الحوامل ومن المشيمة في الحوامل."
+            }, {
+                num: 28,
+                en: "GH action acts by direct effects by binding to receptor only.",
+                ar: "تأثير هرمون النمو يعمل عن طريق تأثيرات مباشرة عن طريق الارتباط بالمستقبل فقط.",
+                isTF: true,
+                correct: false,
+                explain_ar: "GH له تأثيرات مباشرة وغير مباشرة (عن طريق السوماتوميدينات)."
+            }, {
+                num: 29,
+                en: "GH can act indirectly through enhancing the release somatomedins mainly from the liver.",
+                ar: "GH يمكن أن يعمل بشكل غير مباشر عن طريق تعزيز إفراز السوماتوميدينات من الكبد بشكل رئيسي.",
+                isTF: true,
+                correct: true,
+                explain_ar: "GH يحفز الكبد لإفراز السوماتوميدينات التي تسبب النمو."
+            }, {
+                num: 30,
+                en: "GH is released from posterior pituitary.",
+                ar: "GH يُفرز من النخامية الخلفية.",
+                isTF: true,
+                correct: false,
+                explain_ar: "GH يُفرز من النخامية الأمامية وليس الخلفية."
+            }, {
+                num: 31,
+                en: "Increased GH released after puberty results in gigantism.",
+                ar: "زيادة إفراز GH بعد البلوغ تؤدي إلى العملقة.",
+                isTF: true,
+                correct: false,
+                explain_ar: "زيادة GH بعد البلوغ تسبب ضخامة الأطراف (Acromegaly) وليس العملقة."
+            }, {
+                num: 32,
+                en: "GH has diabetogenic effect.",
+                ar: "GH له تأثير سكري.",
+                isTF: true,
+                correct: true,
+                explain_ar: "GH يقلل استخدام الجلوكوز ويزيد سكر الدم، مما يسبب تأثيرًا سكريًا."
+            }, {
+                num: 33,
+                en: "ADH hormone is responsible for increased excretion of water by the kidney and producing diluted urine.",
+                ar: "هرمون ADH مسؤول عن زيادة إفراز الماء عن طريق الكلى وإنتاج بول مخفف.",
+                isTF: true,
+                correct: false,
+                explain_ar: "ADH يقلل إفراز الماء وينتج بولًا مركزًا (وليس مخففًا)."
+            }, {
+                num: 34,
+                en: "Regarding the functions of thyroid hormone, BMR is decreased in the tissues.",
+                ar: "فيما يتعلق بوظائف هرمون الغدة الدرقية، يقل معدل الأيض الأساسي في الأنسجة.",
+                isTF: true,
+                correct: false,
+                explain_ar: "هرمون الغدة الدرقية يزيد BMR في جميع الأنسجة."
+            }, {
+                num: 35,
+                en: "Deficiency of thyroid hormone after puberty gives Graves' disease.",
+                ar: "نقص هرمون الغدة الدرقية بعد البلوغ يعطي مرض جريفز.",
+                isTF: true,
+                correct: false,
+                explain_ar: "نقص هرمون الغدة الدرقية بعد البلوغ يسبب الوذمة المخاطية (Myxedema)، ومرض جريفز هو فرط نشاط الغدة الدرقية."
+            }, {
+                num: 36,
+                en: "Main aim of parathyroid hormone (PTH) is to increase serum Ca++ level.",
+                ar: "الهدف الرئيسي لهرمون الغدة الجار درقية (PTH) هو زيادة مستوى Ca++ في المصل.",
+                isTF: true,
+                correct: true,
+                explain_ar: "PTH يرفع مستوى الكالسيوم في الدم."
+            }, {
+                num: 37,
+                en: "The adrenal cortex releases adrenal androgens and minimal estrogen.",
+                ar: "قشرة الغدة الكظرية تطلق الأندروجينات الكظرية والقليل من الإستروجين.",
+                isTF: true,
+                correct: true,
+                explain_ar: "قشرة الكظر تنتج الأندروجينات وكمية قليلة من الإستروجين."
+            }, {
+                num: 38,
+                en: "Aldosterone is released from adrenal medulla.",
+                ar: "الألدوستيرون يُطلق من النخاع الكظري.",
+                isTF: true,
+                correct: false,
+                explain_ar: "الألدوستيرون يُفرز من قشرة الكظر وليس من النخاع."
+            }, {
+                num: 39,
+                en: "Antistress Action of Cortisol includes decreases plasma levels of glucose, amino acids and proteins.",
+                ar: "تأثير الكورتيزول المضاد للضغط يشمل تقليل مستويات الجلوكوز والأحماض الأمينية والبروتين في البلازما.",
+                isTF: true,
+                correct: false,
+                explain_ar: "الكورتيزول يزيد مستويات الجلوكوز والأحماض الأمينية والبروتين في البلازما."
+            }, {
+                num: 40,
+                en: "Antistress Action of Cortisol includes it spares glucose for brain use.",
+                ar: "تأثير الكورتيزول المضاد للضغط يشمل توفير الجلوكوز لاستخدام الدماغ.",
+                isTF: true,
+                correct: true,
+                explain_ar: "الكورتيزول يحافظ على الجلوكوز للدماغ عن طريق تقليل استخدامه في الأنسجة الأخرى."
+            }, {
+                num: 41,
+                en: "Adrenal androgens is responsible for growth of axillary and pubic hair in females.",
+                ar: "الأندروجينات الكظرية مسؤولة عن نمو شعر الإبط والعانة في الإناث.",
+                isTF: true,
+                correct: true,
+                explain_ar: "الأندروجينات الكظرية مسؤولة عن نمو الشعر في الإناث."
+            }, {
+                num: 42,
+                en: "The major pancreatic hormones Insulin is produced by alpha cells.",
+                ar: "هرمون الأنسولين البنكرياسي الرئيسي يُنتج بواسطة خلايا ألفا.",
+                isTF: true,
+                correct: false,
+                explain_ar: "الأنسولين يُنتج من خلايا بيتا وليس ألفا (خلايا ألفا تنتج الجلوكاجون)."
+            }, {
+                num: 43,
+                en: "Glucagon increases blood glucose level.",
+                ar: "الجلوكاجون يزيد مستوى الجلوكوز في الدم.",
+                isTF: true,
+                correct: true,
+                explain_ar: "الجلوكاجون يرفع سكر الدم عن طريق تكسير الجليكوجين."
+            }, {
+                num: 44,
+                en: "Functions of testosterone during puberty includes decreased strength and mass.",
+                ar: "وظائف التستوستيرون أثناء البلوغ تشمل تقليل القوة والكتلة.",
+                isTF: true,
+                correct: false,
+                explain_ar: "التستوستيرون يزيد القوة والكتلة العضلية."
+            }, {
+                num: 45,
+                en: "Testosterone makes the skin thick, rough, appearance of facial hair, baldness, and acne.",
+                ar: "التستوستيرون يجعل الجلد سميكًا، خشنًا، ظهور شعر الوجه، الصلع، وحب الشباب.",
+                isTF: true,
+                correct: true,
+                explain_ar: "التستوستيرون يسبب تغيرات في الجلد بما في ذلك شعر الوجه والصلع وحب الشباب."
+            }, {
+                num: 46,
+                en: "Estrogen Promotes the development of Proliferative changes of endometrium.",
+                ar: "الإستروجين يعزز تطور التغيرات التكاثرية في بطانة الرحم.",
+                isTF: true,
+                correct: true,
+                explain_ar: "الإستروجين يسبب التغيرات التكاثرية في بطانة الرحم."
+            }, {
+                num: 47,
+                en: "Progesterone stimulates the contraction of the myometrium.",
+                ar: "البروجستيرون يحفز انقباض عضلة الرحم.",
+                isTF: true,
+                correct: false,
+                explain_ar: "البروجستيرون يثبط انقباض عضلة الرحم (يُرخيها) بينما الإستروجين يحفز الانقباض."
+            }, {
+                num: 48,
+                en: "Sources of progesterone secretion is Corpus luteum in non-pregnant females.",
+                ar: "مصادر إفراز البروجستيرون هي الجسم الأصفر في الإناث غير الحوامل.",
+                isTF: true,
+                correct: true,
+                explain_ar: "في غير الحوامل، يُفرز البروجستيرون من الجسم الأصفر."
+            }, {
+                num: 49,
+                en: "Progesterone induces secretory changes in endometrium.",
+                ar: "البروجستيرون يحفز التغيرات الإفرازية في بطانة الرحم.",
+                isTF: true,
+                correct: true,
+                explain_ar: "البروجستيرون يسبب التغيرات الإفرازية في بطانة الرحم."
+            }, {
+                num: 50,
+                en: "Testosterone induces epiphysis closure and increase linear growth.",
+                ar: "التستوستيرون يحفز إغلاق الصفائح المشاشية ويزيد النمو الطولي.",
+                isTF: true,
+                correct: true,
+                explain_ar: "التستوستيرون يسرع النمو الطولي ثم يحفز إغلاق الصفائح المشاشية."
+            }]
+        }];
+
+        // ========================== SECTION EXPLANATIONS ==========================
+        const sectionExplanations = {
+            "الجهاز العصبي المركزي CNS": {
+                text_ar: "١. CSF يطفو الدماغ ويقلل وزنه الفعال.\n٢. يوجد CSF في الفضاء تحت العنكبوتية وبطينات الدماغ.\n٣. معدل إفراز CSF: 500 مل/يوم (نصف لتر).\n٤. الفص الجبهي مسؤول عن الوظائف الحركية.\n٥. المخيخ مسؤول عن التوازن.\n٦. النخاع المستطيل يحتوي على المراكز الحيوية.\n٧. البزل القطني أسفل L2 لأخذ عينة CSF.\n٨. الحاجز الدموي الدماغي: وصلات محكمة بين الخلايا البطانية.\n٩. الإيثانول يعبر الحاجز الدموي الدماغي بسهولة.\n١٠. المشابك الكيميائية أحادية الاتجاه.\n١١. المشابك الكهربائية تحتوي على gap junctions.\n١٢. الخلايا قليلة التغصن: خلايا الميالين في CNS.\n١٣. الخلايا النجمية: استقلاب الناقلات العصبية.\n١٤. منعكس التمدد لا يشمل القشرة المخية.\n١٥. النغمة العضلية تساعد في عودة الدم الوريدي.",
+                text_en: "1. CSF floats the brain and reduces effective weight.\n2. CSF is in subarachnoid space and ventricles.\n3. CSF secretion rate: 500 ml/day (half liter).\n4. Frontal lobe: motor functions.\n5. Cerebellum: balance and coordination.\n6. Medulla oblongata: vital centers.\n7. Lumbar puncture below L2 for CSF.\n8. BBB: tight junctions between endothelial cells.\n9. Ethanol crosses BBB easily.\n10. Chemical synapses are unidirectional.\n11. Electrical synapses have gap junctions.\n12. Oligodendrocytes: myelinating cells of CNS.\n13. Astrocytes: neurotransmitter metabolism.\n14. Stretch reflex does not involve cerebral cortex.\n15. Muscle tone aids venous return."
+            },
+            "الجهاز العصبي الذاتي ANS": {
+                text_ar: "١. الجهاز الذاتي يغذي القلب والعضلات الملساء والغدد.\n٢. الجهاز الودي منشأه من T1-L2.\n٣. الأعصاب القحفية لنظير الودي: III، VII، IX، X.\n٤. الودي يثبط إفراغ الأمعاء والمثانة.\n٥. نظير الودي يزيد حركة الأمعاء والإفرازات.\n٦. القنوات الأيونية: متسربة، معتمدة على الجهد، معتمدة على الرابط.\n٧. قنوات البوتاسيوم المتسربة دائمًا مفتوحة.\n٨. القنوات المعتمدة على الجهد تفتح/تغلق بتغير الجهد.",
+                text_en: "1. ANS supplies cardiac, smooth muscle, and glands.\n2. Sympathetic: T1-L2 origin.\n3. Cranial nerves for parasympathetic: III, VII, IX, X.\n4. Sympathetic inhibits bowel and bladder emptying.\n5. Parasympathetic increases GIT motility and secretion.\n6. Ion channels: leaky, voltage-gated, ligand-gated.\n7. K+ leaky channels are always open.\n8. Voltage-gated channels respond to voltage changes."
+            },
+            "العضلات و الجهاز العصبي Muscle & Nervous": {
+                text_ar: "١. RMP = -70mV.\n٢. RMP يتأسس بانتشار الأيونات ومضخة Na+/K+.\n٣. الصوديوم خارج الخلية، البوتاسيوم داخل الخلية.\n٤. البوتاسيوم مسؤول عن إعادة الاستقطاب.\n٥. الصوديوم مسؤول عن إزالة الاستقطاب.\n٦. قنوات البوتاسيوم المتسربة أساسية لـ RMP.\n٧. مضخة Na+/K+ تضخ 3Na+ خارج و2K+ داخل.\n٨. فترة الامتناع المطلقة بسبب تعطيل قنوات الصوديوم.\n٩. التوصيل القفزي يوفر الطاقة ويزيد السرعة.\n١٠. العضلات الهيكلية إرادية مخططة، القلبية لا إرادية مخططة، الملساء لا إرادية غير مخططة.",
+                text_en: "1. RMP = -70mV.\n2. RMP established by ion diffusion and Na+/K+ pump.\n3. Na+ outside, K+ inside cells.\n4. K+ responsible for repolarization.\n5. Na+ responsible for depolarization.\n6. K+ leaky channels are key for RMP.\n7. Na+/K+ pump: 3Na+ out, 2K+ in.\n8. ARP due to Na+ channel inactivation.\n9. Saltatory conduction saves energy and speeds transmission.\n10. Skeletal: voluntary striated; Cardiac: involuntary striated; Smooth: involuntary non-striated."
+            },
+            "الجهاز الهضمي Digestive System": {
+                text_ar: "١. المعدة تخزن الطعام، تفرز HCl والبيبسين والعامل الجوهري.\n٢. الكبد ينتج الصفراء، المرارة تخزنها.\n٣. الأميليز لهضم الكربوهيدرات، الليباز للدهون، البروتياز للبروتين.\n٤. الصفراء تستحلب الدهون.\n٥. منعكس البلع: المرحلة البلعومية والمريئية لا إرادية.\n٦. التنفس مثبط أثناء البلع.\n٧. منعكس التبرز منعكس نخاعي.\n٨. التقيؤ المفرط يسبب قلاء استقلابي وليس حماض.",
+                text_en: "1. Stomach stores food, secretes HCl, pepsin, intrinsic factor.\n2. Liver produces bile, gallbladder stores it.\n3. Amylase for carbs, lipase for fats, proteases for proteins.\n4. Bile emulsifies fats.\n5. Swallowing: pharyngeal and esophageal phases are involuntary.\n6. Breathing is inhibited during swallowing.\n7. Defecation reflex is a spinal reflex.\n8. Excessive vomiting causes metabolic alkalosis."
+            },
+            "الأيض و الحرارة Metabolism & Temperature": {
+                text_ar: "١. درجة الحرارة الأساسية ثابتة (الأنسجة العميقة).\n٢. درجة حرارة الجلد تتغير مع المحيط.\n٣. مركز التعرق في الهايبوثلاموس الأمامي.\n٤. الارتعاش يزيد إنتاج الحرارة.\n٥. التعرق يزيد فقدان الحرارة.\n٦. الهايبوثلاموس الخلفي: مركز اكتساب الحرارة.\n٧. الهايبوثلاموس الأمامي: مركز فقدان الحرارة.\n٨. الحمى ارتفاع درجة الحرارة فوق 37.5°C.\n٩. ضربة الشمس فوق 41°C.",
+                text_en: "1. Core temperature is constant (deep tissues).\n2. Skin temperature varies with the environment.\n3. Sweating center is in the anterior hypothalamus.\n4. Shivering increases heat production.\n5. Sweating increases heat loss.\n6. Posterior hypothalamus: heat gain center.\n7. Anterior hypothalamus: heat loss center.\n8. Fever: temperature above 37.5°C.\n9. Heat stroke: temperature above 41°C."
+            },
+            "الغدد الصماء Endocrine System": {
+                text_ar: "١. النخامية الأمامية: GH، البرولاكتين، FSH، LH، ACTH، TSH.\n٢. النخامية الخلفية: ADH والأوكسيتوسين.\n٣. GH له تأثيرات مباشرة وغير مباشرة (سوماتوميدينات).\n٤. نقص GH قبل البلوغ ← قزامة، زيادته ← عملقة.\n٥. زيادة GH بعد البلوغ ← ضخامة الأطراف.\n٦. ADH يقلل إخراج الماء وينتج بولًا مركزًا.\n٧. الأوكسيتوسين: إفراز الحليب وانقباض الرحم.\n٨. هرمون الغدة الدرقية يزيد BMR ومعدل ضربات القلب.\n٩. نقص هرمون الغدة الدرقية بعد البلوغ ← وذمة مخاطية.\n١٠. PTH يزيد الكالسيوم في الدم.\n١١. قشرة الكظر: القشرانيات المعدنية والسكرية والأندروجينات.\n١٢. الكورتيزول مضاد للالتهاب والحساسية والضغط.\n١٣. الألدوستيرون يعيد امتصاص الصوديوم ويطرح البوتاسيوم.\n١٤. الأنسولين من خلايا بيتا، يخفض سكر الدم.\n١٥. الجلوكاجون من خلايا ألفا، يرفع سكر الدم.",
+                text_en: "1. Anterior pituitary: GH, prolactin, FSH, LH, ACTH, TSH.\n2. Posterior pituitary: ADH and oxytocin.\n3. GH has direct and indirect (somatomedins) effects.\n4. GH deficiency before puberty → dwarfism, excess → gigantism.\n5. GH excess after puberty → acromegaly.\n6. ADH decreases water excretion, produces concentrated urine.\n7. Oxytocin: milk ejection and uterine contraction.\n8. Thyroid hormone increases BMR and heart rate.\n9. Thyroid deficiency after puberty → myxedema.\n10. PTH increases serum calcium.\n11. Adrenal cortex: mineralocorticoids, glucocorticoids, androgens.\n12. Cortisol: anti-inflammatory, anti-allergic, anti-stress.\n13. Aldosterone: reabsorbs Na+, excretes K+.\n14. Insulin from beta cells, lowers blood glucose.\n15. Glucagon from alpha cells, raises blood glucose."
+            }
+        };
+
+        // ========================== STATE ==========================
+        const LS_KEY = 'physiology_progress_v3';
+        let state = {
+            mode: 'practice',
+            order: 'device',
+            showTranslation: true,
+            timerSeconds: 0,
+            quizQuestions: [],
+            currentIndex: 0,
+            correctCount: 0,
+            wrongCount: 0,
+            answered: false,
+            selectedOptionIdx: null,
+            selectedOptionSet: new Set(),
+            sessionMistakes: [],
+            reviewOnly: false,
+            timerInterval: null,
+            timeLeft: 0
+        };
+
+        let maleEnglishVoice = null;
+        let currentExplainLang = 'ar';
+        let currentExplainName = '';
+
+        // ========================== THEME ==========================
+        function setTheme(theme) {
+            document.body.classList.toggle('light', theme === 'light');
+            document.querySelectorAll('.theme-toggle button').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.theme === theme);
+            });
+            localStorage.setItem('surgery_theme', theme);
+        }
+
+        // ========================== LOAD / SAVE ==========================
+        function loadProgress() {
+            try { const raw = localStorage.getItem(LS_KEY); if (!raw) return { attempted: {}, mistakes: {} };
+                return JSON.parse(raw); } catch (e) { return { attempted: {}, mistakes: {} }; }
+        }
+
+        function saveProgress(p) { localStorage.setItem(LS_KEY, JSON.stringify(p)); }
+
+        function qid(sectionName, num) { return sectionName + '___' + num; }
+
+        // ========================== SECTION EXPLANATION ==========================
+        function showExplanation(name) {
+            currentExplainName = name;
+            const box = document.getElementById('section-explanation');
+            const title = document.getElementById('explain-title');
+            const textDiv = document.getElementById('explain-text');
+            const data = sectionExplanations[name];
+
+            title.textContent = name;
+
+            if (!data) {
+                textDiv.textContent = currentExplainLang === 'ar' ? 'لا يوجد شرح متاح لهذا القسم حاليًا.' :
+                    'No explanation available.';
+                box.classList.add('show');
+                updateExplainTextClass();
+                return;
+            }
+
+            const txt = currentExplainLang === 'ar' ? data.text_ar : data.text_en;
+            textDiv.innerHTML = txt.replace(/\n/g, '<br>');
+            updateExplainTextClass();
+            box.classList.add('show');
+        }
+
+        function updateExplainTextClass() {
+            const textDiv = document.getElementById('explain-text');
+            textDiv.classList.remove('ar', 'en');
+            textDiv.classList.add(currentExplainLang);
+        }
+
+        function closeExplanation() {
+            document.getElementById('section-explanation').classList.remove('show');
+        }
+
+        function setExplainLang(lang) {
+            currentExplainLang = lang;
+            document.querySelectorAll('.explain-controls .lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            if (currentExplainName) showExplanation(currentExplainName);
+        }
+
+        // ========================== UI ==========================
+        function updateHomeStats() {
+            const p = loadProgress();
+            const attemptedKeys = Object.keys(p.attempted || {});
+            let correct = 0,
+                wrong = 0;
+            attemptedKeys.forEach(k => { if (p.attempted[k] === 'correct') correct++;
+                else wrong++; });
+            const total = attemptedKeys.length;
+            const pct = total ? Math.round((correct / total) * 100) : 0;
+            document.getElementById('statAttempted').textContent = total;
+            document.getElementById('statCorrect').textContent = correct;
+            document.getElementById('statWrong').textContent = wrong;
+            document.getElementById('progressPercent').innerHTML = pct + '<small>%</small>';
+            const circle = document.getElementById('progressCircle');
+            const circumference = 176;
+            circle.style.strokeDashoffset = circumference - (pct / 100) * circumference;
+            updateWeakSectionSuggestion(p);
+        }
+
+        function updateWeakSectionSuggestion(p) {
+            const attempted = p.attempted || {};
+            let bestIdx = -1,
+                bestRate = 0,
+                bestName = '';
+            QUESTION_BANK.forEach((sec, idx) => {
+                let secAttempted = 0,
+                    secWrong = 0;
+                sec.questions.forEach(q => {
+                    const key = qid(sec.name, q.num);
+                    if (attempted[key] !== undefined) { secAttempted++; if (attempted[key] === 'wrong')
+                        secWrong++; }
+                });
+                if (secAttempted >= 2) {
+                    const rate = secWrong / secAttempted;
+                    if (rate > bestRate) { bestRate = rate;
+                        bestIdx = idx;
+                        bestName = sec.name; }
+                }
+            });
+            const weakLink = document.getElementById('weakLink');
+            if (bestIdx >= 0 && bestRate > 0) {
+                weakLink.style.display = 'flex';
+                document.getElementById('weakSectionName').textContent = bestName;
+                document.getElementById('weakSectionRate').textContent = Math.round(bestRate * 100) + '%';
+                weakLink.dataset.sectionIdx = bestIdx;
+            } else {
+                weakLink.style.display = 'none';
+            }
+        }
+
+        function buildSectionList() {
+            const wrap = document.getElementById('section-list');
+            wrap.innerHTML = '';
+            QUESTION_BANK.forEach((sec, idx) => {
+                const div = document.createElement('div');
+                div.className = 'section-item active';
+                div.dataset.idx = idx;
+                const nameSpan = document.createElement('span');
+                nameSpan.textContent = sec.nameEn;
+                const infoBtn = document.createElement('button');
+                infoBtn.className = 'info-btn';
+                infoBtn.innerHTML = '<i class="fas fa-info-circle"></i>';
+                infoBtn.title = "شرح القسم / Section Explanation";
+                infoBtn.onclick = (e) => { e.stopPropagation();
+                    showExplanation(sec.name); };
+                const cntSpan = document.createElement('span');
+                cntSpan.className = 'cnt';
+                cntSpan.textContent = sec.sectionTotal || sec.questions.length;
+                div.appendChild(nameSpan);
+                div.appendChild(infoBtn);
+                div.appendChild(cntSpan);
+                div.onclick = () => { div.classList.toggle('active'); };
+                wrap.appendChild(div);
+            });
+        }
+
+        // ========================== ACTIONS ==========================
+        function toggleOptions(targetId) {
+            const allSubs = document.querySelectorAll('.sub-options');
+            allSubs.forEach(el => el.classList.remove('show'));
+            const target = document.getElementById(targetId);
+            if (target) target.classList.add('show');
+
+            document.querySelectorAll('.action-icon').forEach(icon => icon.classList.remove('active'));
+            const activeIcon = document.querySelector(`.action-icon[data-target="${targetId}"]`);
+            if (activeIcon) activeIcon.classList.add('active');
+        }
+
+        function closeAllOptions() {
+            document.querySelectorAll('.sub-options').forEach(el => el.classList.remove('show'));
+            document.querySelectorAll('.action-icon').forEach(icon => icon.classList.remove('active'));
+            const defaultIcon = document.querySelector('.action-icon[data-target="modeOptions"]');
+            if (defaultIcon) defaultIcon.classList.add('active');
+        }
+
+        function selectMode(m) {
+            state.mode = m;
+            document.querySelectorAll('#modeOptions .action-btn').forEach(el => {
+                el.classList.toggle('active', el.dataset.mode === m);
+            });
+            closeAllOptions();
+        }
+
+        function selectOrder(o) {
+            state.order = o;
+            document.querySelectorAll('#orderOptions .action-btn').forEach(el => {
+                el.classList.toggle('active', el.dataset.order === o);
+            });
+            closeAllOptions();
+        }
+
+        function selectTranslate(t) {
+            state.showTranslation = (t === 'yes');
+            document.querySelectorAll('#langOptions .action-btn').forEach(el => {
+                el.classList.toggle('active', el.dataset.translate === t);
+            });
+            closeAllOptions();
+        }
+
+        function selectTimer(sec) {
+            state.timerSeconds = sec;
+            document.querySelectorAll('#timerOptions .action-btn').forEach(el => {
+                el.classList.toggle('active', parseInt(el.dataset.timer) === sec);
+            });
+            closeAllOptions();
+        }
+
+        // ========================== NAVIGATION ==========================
+        function enterApp() {
+            document.getElementById('main-screen').style.display = 'block';
+            buildSectionList();
+            updateHomeStats();
+            const savedTheme = localStorage.getItem('surgery_theme') || 'dark';
+            setTheme(savedTheme);
+            if (window.speechSynthesis) {
+                window.speechSynthesis.getVoices();
+                window.speechSynthesis.onvoiceschanged = () => {
+                    window.speechSynthesis.getVoices();
+                    maleEnglishVoice = null;
+                };
+            }
+        }
+
+        function goHome() {
+            stopTimer();
+            document.getElementById('screen-quiz').classList.remove('active');
+            document.getElementById('screen-results').classList.remove('active');
+            document.getElementById('main-screen').style.display = 'block';
+            updateHomeStats();
+        }
+
+        function quitQuiz() {
+            if (confirm('متأكد تخرج؟')) { stopTimer();
+                goHome(); }
+        }
+
+        function resetProgress() {
+            if (confirm('متأكد تصفير التقدم؟')) { localStorage.removeItem(LS_KEY);
+                updateHomeStats(); }
+        }
+
+        // ========================== QUIZ ==========================
+        function shuffleArray(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
+
+        function startQuiz() {
+            const activeSecEls = document.querySelectorAll('#section-list .section-item.active');
+            if (activeSecEls.length === 0) { alert('اختار جزء واحد على الأقل!'); return; }
+            const activeIdxs = Array.from(activeSecEls).map(el => parseInt(el.dataset.idx));
+            let qs = [];
+            activeIdxs.forEach(idx => {
+                const sec = QUESTION_BANK[idx];
+                sec.questions.forEach(q => { qs.push(Object.assign({}, q, { sectionName: sec.name })); });
+            });
+            if (qs.length === 0) { alert('هذا القسم لا يحتوي على أسئلة!'); return; }
+            if (state.order === 'random') qs = shuffleArray(qs);
+            state.quizQuestions = qs;
+            state.currentIndex = 0;
+            state.correctCount = 0;
+            state.wrongCount = 0;
+            state.sessionMistakes = [];
+            state.reviewOnly = false;
+            document.getElementById('main-screen').style.display = 'none';
+            document.getElementById('screen-quiz').classList.add('active');
+            document.getElementById('screen-results').classList.remove('active');
+            renderQuestion();
+        }
+
+        function reviewMistakes() {
+            const p = loadProgress();
+            const mistakeKeys = Object.keys(p.mistakes || {});
+            if (mistakeKeys.length === 0) { alert('مفيش أخطاء للمراجعة 🎉'); return; }
+            let qs = [];
+            QUESTION_BANK.forEach(sec => {
+                sec.questions.forEach(q => {
+                    const key = qid(sec.name, q.num);
+                    if (mistakeKeys.includes(key)) qs.push(Object.assign({}, q, { sectionName: sec.name }));
+                });
+            });
+            state.quizQuestions = qs;
+            state.currentIndex = 0;
+            state.correctCount = 0;
+            state.wrongCount = 0;
+            state.sessionMistakes = [];
+            state.reviewOnly = true;
+            state.mode = 'practice';
+            document.getElementById('main-screen').style.display = 'none';
+            document.getElementById('screen-quiz').classList.add('active');
+            document.getElementById('screen-results').classList.remove('active');
+            renderQuestion();
+        }
+
+        function startWeakSectionQuiz() {
+            const weakLink = document.getElementById('weakLink');
+            const idx = weakLink.dataset.sectionIdx;
+            if (idx === undefined) return;
+            document.querySelectorAll('#section-list .section-item').forEach(el => { el.classList.toggle('active', el
+                    .dataset.idx == idx); });
+            startQuiz();
+        }
+
+        // ========================== RENDER ==========================
+        function renderQuestion() {
+            state.answered = false;
+            state.selectedOptionIdx = null;
+            state.selectedOptionSet = new Set();
+
+            const total = state.quizQuestions.length;
+            const q = state.quizQuestions[state.currentIndex];
+
+            document.getElementById('quiz-position').innerHTML =
+                `<i class="fas fa-question-circle"></i> ${state.currentIndex+1} / ${total}`;
+            document.getElementById('quiz-score').innerHTML =
+                `<i class="fas fa-check-circle" style="color:var(--success);"></i> ${state.correctCount} <i class="fas fa-times-circle" style="color:var(--danger);margin-right:4px;"></i> ${state.wrongCount}`;
+            document.getElementById('progress-bar').style.width = ((state.currentIndex) / total * 100) + '%';
+
+            let tagText = `<i class="fas fa-tag"></i> ${q.sectionName}`;
+            if (q.isTF) {
+                tagText += ` <span class="tf-badge">صواب / خطأ</span>`;
+            }
+            document.getElementById('q-section-tag').innerHTML = tagText;
+
+            const qEnContainer = document.getElementById('q-en');
+            wrapEnglishText(`${q.num}. ${q.en}`, qEnContainer);
+
+            const qArEl = document.getElementById('q-ar');
+            qArEl.textContent = q.ar || '';
+            qArEl.style.display = state.showTranslation && q.ar ? 'block' : 'none';
+
+            const optsWrap = document.getElementById('options');
+            optsWrap.innerHTML = '';
+
+            if (q.isTF) {
+                const tfOptions = [
+                    { en: "True", ar: "صواب" },
+                    { en: "False", ar: "خطأ" }
+                ];
+                tfOptions.forEach((opt, i) => {
+                    const div = document.createElement('div');
+                    div.className = 'option';
+                    div.dataset.idx = i;
+                    const isCorrect = (i === 0) ? q.correct === true : q.correct === false;
+                    div.dataset.correct = isCorrect ? 'true' : 'false';
+
+                    const enDiv = document.createElement('div');
+                    enDiv.className = 'opt-en';
+                    wrapEnglishText(opt.en, enDiv);
+
+                    const arDiv = document.createElement('div');
+                    arDiv.className = 'opt-ar';
+                    arDiv.textContent = opt.ar || '';
+                    arDiv.style.display = state.showTranslation && opt.ar ? 'block' : 'none';
+
+                    const markSpan = document.createElement('span');
+                    markSpan.className = 'mark';
+
+                    div.appendChild(enDiv);
+                    div.appendChild(arDiv);
+                    div.appendChild(markSpan);
+
+                    div.onclick = () => onOptionClick(i);
+                    optsWrap.appendChild(div);
+                });
+            } else {
+                q.options.forEach((opt, i) => {
+                    const div = document.createElement('div');
+                    div.className = 'option';
+                    div.dataset.idx = i;
+                    div.dataset.correct = opt.correct ? 'true' : 'false';
+
+                    const enDiv = document.createElement('div');
+                    enDiv.className = 'opt-en';
+                    wrapEnglishText(opt.en, enDiv);
+
+                    const arDiv = document.createElement('div');
+                    arDiv.className = 'opt-ar';
+                    arDiv.textContent = opt.ar || '';
+                    arDiv.style.display = state.showTranslation && opt.ar ? 'block' : 'none';
+
+                    const markSpan = document.createElement('span');
+                    markSpan.className = 'mark';
+
+                    div.appendChild(enDiv);
+                    div.appendChild(arDiv);
+                    div.appendChild(markSpan);
+
+                    div.onclick = () => onOptionClick(i);
+                    optsWrap.appendChild(div);
+                });
+            }
+
+            document.getElementById('feedback').classList.add('hidden');
+            document.getElementById('feedback').innerHTML = '';
+
+            const nextBtn = document.getElementById('btn-next');
+            const isLast = state.currentIndex === total - 1;
+            const finishLabel = isLast ? 'إنهاء ✅' : 'التالي ⬅️';
+
+            if (state.mode === 'test') {
+                nextBtn.disabled = true;
+                nextBtn.innerHTML = `<i class="fas fa-arrow-left"></i> ${finishLabel}`;
+                nextBtn.onclick = () => {
+                    if (state.selectedOptionIdx === null) return;
+                    stopTimer();
+                    const q2 = state.quizQuestions[state.currentIndex];
+                    let isCorrect = false;
+                    if (q2.isTF) {
+                        const opt = document.querySelector(`.option[data-idx="${state.selectedOptionIdx}"]`);
+                        isCorrect = opt.dataset.correct === 'true';
+                    } else {
+                        isCorrect = !!q2.options[state.selectedOptionIdx].correct;
+                    }
+                    recordAnswer(isCorrect, [state.selectedOptionIdx]);
+                    goToNextOrFinish();
+                };
+            } else {
+                nextBtn.disabled = true;
+                nextBtn.innerHTML = `<i class="fas fa-arrow-left"></i> ${finishLabel}`;
+                nextBtn.onclick = () => nextQuestion();
+            }
+            startTimer();
+        }
+
+        function onOptionClick(i) {
+            if (state.answered) return;
+            state.selectedOptionIdx = i;
+            document.querySelectorAll('.option').forEach(el => el.classList.remove('selected'));
+            document.querySelector(`.option[data-idx="${i}"]`).classList.add('selected');
+            if (state.mode === 'test') {
+                document.getElementById('btn-next').disabled = false;
+            } else {
+                submitSingleAnswer(i);
+            }
+        }
+
+        function submitSingleAnswer(i) {
+            const q = state.quizQuestions[state.currentIndex];
+            let isCorrect = false;
+            if (q.isTF) {
+                const opt = document.querySelector(`.option[data-idx="${i}"]`);
+                isCorrect = opt.dataset.correct === 'true';
+            } else {
+                isCorrect = !!q.options[i].correct;
+            }
+            finalizeAnswer(isCorrect, [i]);
+        }
+
+        function recordAnswer(isCorrect, chosenIdxs) {
+            stopTimer();
+            state.answered = true;
+            const q = state.quizQuestions[state.currentIndex];
+            if (isCorrect) state.correctCount++;
+            else state.wrongCount++;
+            const p = loadProgress();
+            const key = qid(q.sectionName, q.num);
+            p.attempted = p.attempted || {};
+            p.mistakes = p.mistakes || {};
+            p.attempted[key] = isCorrect ? 'correct' : 'wrong';
+            if (isCorrect) { delete p.mistakes[key]; } else { p.mistakes[key] = true; }
+            saveProgress(p);
+            if (!isCorrect) { state.sessionMistakes.push({ q, chosenIdxs }); }
+        }
+
+        function goToNextOrFinish() {
+            if (state.currentIndex < state.quizQuestions.length - 1) {
+                state.currentIndex++;
+                renderQuestion();
+            } else { showResults(); }
+        }
+
+        function finalizeAnswer(isCorrect, chosenIdxs) {
+            stopTimer();
+            state.answered = true;
+            const q = state.quizQuestions[state.currentIndex];
+
+            document.querySelectorAll('.option').forEach((el) => {
+                const idx = parseInt(el.dataset.idx);
+                el.classList.add('disabled');
+                const isCorrectOption = el.dataset.correct === 'true';
+                if (isCorrectOption) {
+                    el.classList.add('correct');
+                    el.querySelector('.mark').textContent = '✅';
+                } else if (chosenIdxs.includes(idx)) {
+                    el.classList.add('wrong');
+                    el.querySelector('.mark').textContent = '❌';
+                }
+            });
+
+            if (isCorrect) state.correctCount++;
+            else state.wrongCount++;
+
+            const p = loadProgress();
+            const key = qid(q.sectionName, q.num);
+            p.attempted = p.attempted || {};
+            p.mistakes = p.mistakes || {};
+            p.attempted[key] = isCorrect ? 'correct' : 'wrong';
+            if (isCorrect) { delete p.mistakes[key]; } else { p.mistakes[key] = true; }
+            saveProgress(p);
+            if (!isCorrect) { state.sessionMistakes.push({ q, chosenIdxs }); }
+
+            document.getElementById('quiz-score').innerHTML =
+                `<i class="fas fa-check-circle" style="color:var(--success);"></i> ${state.correctCount} <i class="fas fa-times-circle" style="color:var(--danger);margin-right:4px;"></i> ${state.wrongCount}`;
+
+            if (state.mode === 'practice') {
+                const fb = document.getElementById('feedback');
+                fb.classList.remove('hidden');
+                fb.className = 'feedback-box ' + (isCorrect ? 'correct' : 'wrong');
+
+                let correctLabels = '';
+                if (q.isTF) {
+                    correctLabels = q.correct ? 'True (صواب)' : 'False (خطأ)';
+                } else {
+                    correctLabels = q.options.map((o, i) => o.correct ? o.en : null).filter(Boolean).join('، ');
+                }
+
+                fb.innerHTML = `
+                    <div class="fb-title">${isCorrect?'✅ صحيحة!':'❌ غلط'}</div>
+                    ${!isCorrect?`<div><b>الصح:</b> ${correctLabels}</div>`:''}
+                    <div class="fb-explain">💡 ${q.explain_ar||''}</div>
+                `;
+            }
+
+            const nextBtn = document.getElementById('btn-next');
+            nextBtn.disabled = false;
+            const isLast = state.currentIndex === state.quizQuestions.length - 1;
+            nextBtn.innerHTML = isLast ? `<i class="fas fa-flag-checkered"></i> إنهاء` :
+                `<i class="fas fa-arrow-left"></i> التالي`;
+            nextBtn.onclick = () => nextQuestion();
+        }
+
+        function nextQuestion() {
+            if (!state.answered) return;
+            if (state.currentIndex < state.quizQuestions.length - 1) {
+                state.currentIndex++;
+                renderQuestion();
+            } else { showResults(); }
+        }
+
+        // ========================== RESULTS ==========================
+        function showResults() {
+            document.getElementById('screen-quiz').classList.remove('active');
+            document.getElementById('screen-results').classList.add('active');
+            document.getElementById('mistakes-list-wrap').classList.add('hidden');
+            const total = state.quizQuestions.length;
+            const pct = total ? Math.round((state.correctCount / total) * 100) : 0;
+            document.getElementById('result-pct').textContent = pct + '%';
+            document.getElementById('score-circle').style.setProperty('--pct', pct);
+            document.getElementById('res-total').textContent = total;
+            document.getElementById('res-correct').textContent = state.correctCount;
+            document.getElementById('res-wrong').textContent = state.wrongCount;
+            const btnMistakes = document.getElementById('btn-show-mistakes');
+            if (state.sessionMistakes.length > 0) { btnMistakes.classList.remove('hidden'); } else { btnMistakes.classList.add(
+                    'hidden'); }
+        }
+
+        // ========================== SHOW MISTAKES LIST ==========================
+        function showMistakesList() {
+            const wrap = document.getElementById('mistakes-list-wrap');
+            const list = document.getElementById('mistakes-list');
+            list.innerHTML = '';
+            state.sessionMistakes.forEach((m, idx) => {
+                const q = m.q;
+                let yourAnswers = '';
+                let correctAnswers = '';
+                if (q.isTF) {
+                    yourAnswers = m.chosenIdxs.map(i => document.querySelector(`.option[data-idx="${i}"] .opt-en`)
+                        ?.textContent || '').join('، ');
+                    correctAnswers = q.correct ? 'True (صواب)' : 'False (خطأ)';
+                } else {
+                    yourAnswers = m.chosenIdxs.map(i => q.options[i].en).join('، ');
+                    correctAnswers = q.options.map((o, i) => o.correct ? o.en : null).filter(Boolean).join('، ');
+                }
+
+                const div = document.createElement('div');
+                div.className = 'mistake-item';
+
+                const toggleBtn = document.createElement('button');
+                toggleBtn.className = 'mistake-toggle';
+                toggleBtn.innerHTML = '<i class="fas fa-eye"></i> عرض السؤال';
+
+                const detailDiv = document.createElement('div');
+                detailDiv.className = 'mistake-detail';
+                detailDiv.style.display = 'none';
+
+                const qHeader = document.createElement('div');
+                qHeader.style.fontWeight = 'bold';
+                qHeader.style.marginBottom = '8px';
+                qHeader.textContent = `${q.num}. ${q.en}`;
+                detailDiv.appendChild(qHeader);
+
+                const optsDiv = document.createElement('div');
+                if (q.isTF) {
+                    const tfOptions = [
+                        { en: "True (صواب)", correct: q.correct === true },
+                        { en: "False (خطأ)", correct: q.correct === false }
+                    ];
+                    tfOptions.forEach((opt, i) => {
+                        const row = document.createElement('div');
+                        row.className = 'opt-row';
+                        const label = document.createElement('span');
+                        label.className = 'opt-label';
+                        label.textContent = opt.en;
+                        const status = document.createElement('span');
+                        status.className = 'opt-status';
+                        if (opt.correct) {
+                            status.textContent = '✅';
+                            status.style.color = 'var(--success)';
+                        } else if (m.chosenIdxs.includes(i)) {
+                            status.textContent = '❌';
+                            status.style.color = 'var(--danger)';
+                        } else {
+                            status.textContent = '—';
+                            status.style.color = 'var(--muted)';
+                        }
+                        row.appendChild(label);
+                        row.appendChild(status);
+                        optsDiv.appendChild(row);
+                    });
+                } else {
+                    q.options.forEach((opt, i) => {
+                        const row = document.createElement('div');
+                        row.className = 'opt-row';
+                        const label = document.createElement('span');
+                        label.className = 'opt-label';
+                        label.textContent = opt.en;
+                        const status = document.createElement('span');
+                        status.className = 'opt-status';
+                        if (opt.correct) {
+                            status.textContent = '✅';
+                            status.style.color = 'var(--success)';
+                        } else if (m.chosenIdxs.includes(i)) {
+                            status.textContent = '❌';
+                            status.style.color = 'var(--danger)';
+                        } else {
+                            status.textContent = '—';
+                            status.style.color = 'var(--muted)';
+                        }
+                        row.appendChild(label);
+                        row.appendChild(status);
+                        optsDiv.appendChild(row);
+                    });
+                }
+                detailDiv.appendChild(optsDiv);
+
+                const explainDiv = document.createElement('div');
+                explainDiv.style.marginTop = '8px';
+                explainDiv.style.fontStyle = 'italic';
+                explainDiv.style.color = 'var(--muted)';
+                explainDiv.textContent = `💡 ${q.explain_ar || ''}`;
+                detailDiv.appendChild(explainDiv);
+
+                toggleBtn.onclick = () => {
+                    const isVisible = detailDiv.style.display !== 'none';
+                    detailDiv.style.display = isVisible ? 'none' : 'block';
+                    toggleBtn.innerHTML = isVisible ? '<i class="fas fa-eye"></i> عرض السؤال' :
+                        '<i class="fas fa-eye-slash"></i> إخفاء السؤال';
+                };
+
+                div.innerHTML = `
+                    <div class="m-q">${q.num}. ${q.en}</div>
+                    <div class="m-you">إجابتك: ${yourAnswers}</div>
+                    <div class="m-correct">الصح: ${correctAnswers}</div>
+                `;
+                div.appendChild(toggleBtn);
+                div.appendChild(detailDiv);
+
+                list.appendChild(div);
+            });
+            wrap.classList.remove('hidden');
+            wrap.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // ========================== TIMER ==========================
+        function stopTimer() {
+            if (state.timerInterval) { clearInterval(state.timerInterval);
+                state.timerInterval = null; }
+            const badge = document.getElementById('timer-badge');
+            badge.classList.add('hidden');
+            badge.classList.remove('warn', 'danger');
+        }
+
+        function startTimer() {
+            stopTimer();
+            if (!state.timerSeconds || state.timerSeconds <= 0) return;
+            const badge = document.getElementById('timer-badge');
+            state.timeLeft = state.timerSeconds;
+            badge.classList.remove('hidden', 'warn', 'danger');
+            badge.innerHTML = `<i class="fas fa-hourglass-half"></i> ${state.timeLeft}`;
+            state.timerInterval = setInterval(() => {
+                state.timeLeft--;
+                if (state.timeLeft <= 0) { badge.innerHTML = `<i class="fas fa-hourglass-end"></i> 0`;
+                    stopTimer();
+                    onTimeUp(); return; }
+                badge.innerHTML = `<i class="fas fa-hourglass-half"></i> ${state.timeLeft}`;
+                badge.classList.toggle('warn', state.timeLeft <= 3 && state.timeLeft > 1);
+                badge.classList.toggle('danger', state.timeLeft <= 1);
+            }, 1000);
+        }
+
+        function onTimeUp() {
+            if (state.answered) return;
+            const q = state.quizQuestions[state.currentIndex];
+            const chosen = state.selectedOptionIdx !== null ? [state.selectedOptionIdx] : [];
+            if (state.mode === 'test') {
+                recordAnswer(false, chosen);
+                goToNextOrFinish();
+            } else {
+                finalizeAnswer(false, chosen);
+            }
+        }
+
+        // ========================== SPEECH ==========================
+        function getMaleEnglishVoice() {
+            if (maleEnglishVoice) return maleEnglishVoice;
+            const voices = window.speechSynthesis.getVoices();
+            let voice = voices.find(v => v.lang === 'en-US' && v.name.toLowerCase().includes('male'));
+            if (!voice) voice = voices.find(v => v.lang === 'en-GB' && v.name.toLowerCase().includes('male'));
+            if (!voice) voice = voices.find(v => v.lang.startsWith('en') && v.name.toLowerCase().includes('male'));
+            if (!voice) voice = voices.find(v => v.lang.startsWith('en'));
+            maleEnglishVoice = voice;
+            return voice;
+        }
+
+        function speakWord(word) {
+            if (!window.speechSynthesis) return;
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(word);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.7;
+            utterance.pitch = 1;
+            utterance.volume = 1;
+            const voice = getMaleEnglishVoice();
+            if (voice) utterance.voice = voice;
+            window.speechSynthesis.speak(utterance);
+        }
+
+        function wrapEnglishText(text, container) {
+            if (!container) return;
+            container.innerHTML = '';
+            if (!text) return;
+            const words = text.split(' ');
+            words.forEach((word, idx) => {
+                if (word.trim() === '') {
+                    container.appendChild(document.createTextNode(' '));
+                    return;
+                }
+                const span = document.createElement('span');
+                span.className = 'word-en';
+                span.textContent = word;
+                let pressTimer = null;
+                const startPress = () => {
+                    pressTimer = setTimeout(() => {
+                        speakWord(word);
+                        span.classList.add('speaking');
+                        setTimeout(() => span.classList.remove('speaking'), 600);
+                        const hint = document.getElementById('speech-hint');
+                        hint.textContent = `🔊 ${word}`;
+                        hint.classList.add('show');
+                        setTimeout(() => hint.classList.remove('show'), 1000);
+                    }, 1000);
+                };
+                const endPress = () => {
+                    if (pressTimer) { clearTimeout(pressTimer);
+                        pressTimer = null; }
+                };
+                span.addEventListener('pointerdown', startPress);
+                span.addEventListener('pointerup', endPress);
+                span.addEventListener('pointerleave', endPress);
+                span.addEventListener('touchstart', startPress, { passive: true });
+                span.addEventListener('touchend', endPress, { passive: true });
+                span.addEventListener('touchcancel', endPress, { passive: true });
+                container.appendChild(span);
+                if (idx < words.length - 1) container.appendChild(document.createTextNode(' '));
+            });
+        }
+
+        // ========================== RIPPLE ==========================
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('.big-btn') || e.target.closest('.welcome-btn');
+            if (!btn) return;
+            const rect = btn.getBoundingClientRect();
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            const size = Math.max(rect.width, rect.height);
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+            ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+            btn.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 500);
+        });
+
+        // ========================== INIT ==========================
+        document.addEventListener('DOMContentLoaded', () => {
+            enterApp();
+        });
+    </script>
+</body>
+</html>
